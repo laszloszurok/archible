@@ -1,2 +1,0 @@
-- name: Localization | Set the timezone
-  command: arch-chroot /mnt ln -sf /usr/share/zoneinfo/{{ arch_init_timezone }} /etc/localtime
