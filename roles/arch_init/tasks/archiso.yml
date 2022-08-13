@@ -1,0 +1,4 @@
+- name: Preinstall checks | Check if the host is booted from the Arch install media
+  fail:
+    msg: "This host is not booted from the Arch install media!"
+  when: ansible_nodename != 'archiso'

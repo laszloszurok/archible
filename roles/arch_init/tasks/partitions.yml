@@ -1,0 +1,110 @@
+- name: Partitioning | Read device information
+  community.general.parted: 
+    device: "{{ arch_init_install_drive }}"
+    unit: MiB
+  register: drive_info
+
+- name: Partitioning | Unmount all partitions
+  ansible.posix.mount:
+    path: "{{ item }}"
+    state: unmounted
+  loop:
+    - /mnt/boot
+    - /mnt
+  when: item in (ansible_mounts | json_query('[].mount'))
+
+- name: Partitioning | Run 'swapoff -a'
+  ansible.builtin.command: swapoff -a
+
+- name: Partitioning | Wipe install drive
+  community.general.parted:
+    device: "{{ arch_init_install_drive }}"
+    number: "{{ item.num }}"
+    state: absent
+  loop: "{{ drive_info.partitions }}"
+
+- name: Partitioning | Create boot partition
+  community.general.parted:
+    device: "{{ arch_init_install_drive }}"
+    label: gpt
+    number: 1
+    part_end: 512MB
+    name: boot
+    flags: [boot, esp]
+    state: present
+
+- name: Partitioning | Create swap partition
+  parted:
+    device: "{{ arch_init_install_drive }}"
+    label: gpt
+    number: 2
+    part_start: 512MB
+    part_end: 8704MB
+    name: swap
+    state: present
+
+- name: Partitioning | Create root partition
+  parted:
+    device: "{{ arch_init_install_drive }}"
+    label: gpt
+    number: 3
+    part_start: 8704MB
+    part_end: 100%
+    name: root
+    state: present
+
+- name: Partitioning | Create fat32 filesystem on the boot partition
+  ansible.builtin.filesystem:
+    dev: "{{ arch_init_install_drive }}{{ arch_init_boot_partition_suffix }}"
+    fstype: vfat
+    opts: -F32
+    force: yes
+
+- name: Partitioning | Create swap filesystem on the swap partition
+  ansible.builtin.filesystem:
+    dev: "{{ arch_init_install_drive }}{{ arch_init_swap_partition_suffix }}"
+    fstype: swap
+    force: yes
+
+- name: Partitioning | Create ext4 filesystem on the root partition
+  filesystem:
+    dev: "{{ arch_init_install_drive }}{{ arch_init_root_partition_suffix }}"
+    fstype: ext4
+    force: yes
+
+- name: Partitioning | Get the UUID of the boot partition
+  command: blkid -s UUID -o value '{{ arch_init_install_drive }}{{ arch_init_boot_partition_suffix }}'
+  register: boot_uuid
+  changed_when: false
+
+- name: Partitioning | Get the UUID of the boot partition
+  command: blkid -s UUID -o value '{{ arch_init_install_drive }}{{ arch_init_swap_partition_suffix }}'
+  register: swap_uuid
+  changed_when: false
+
+- name: Partitioning | Get the UUID of the root partition
+  command: blkid -s UUID -o value '{{ arch_init_install_drive }}{{ arch_init_root_partition_suffix }}'
+  register: root_uuid
+  changed_when: false
+
+- name: Partitioning | Mount the root partition
+  ansible.posix.mount:
+    src: "UUID={{ root_uuid.stdout }}"
+    fstype: ext4
+    path: /mnt
+    state: mounted
+
+- name: Partitioning | Create mountpoint for the boot partition
+  ansible.builtin.file:
+    path: /mnt/boot
+    state: directory
+
+- name: Partitioning | Mount the boot partition
+  ansible.posix.mount:
+    src: "UUID={{ boot_uuid.stdout }}"
+    fstype: vfat
+    path: /mnt/boot
+    state: mounted
+
+- name: Partitioning | Mount the swap partition
+  ansible.builtin.command: swapon {{ arch_init_install_drive }}{{ arch_init_swap_partition_suffix }}

@@ -1,0 +1,11 @@
+---
+# tasks file for arch-install
+
+- name: Include ntp-sync task
+  include_tasks: ntp-sync.yml
+
+- name: Include partitions task
+  include_tasks: partitions.yml
+
+- name: Include install task
+  include_tasks: install.yml

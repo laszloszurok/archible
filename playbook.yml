@@ -1,0 +1,23 @@
+# - hosts: arch
+#   vars:
+#     ansible_ssh_user: root
+#     ansible_host_key_checking: false
+#     ansible_ssh_private_key_file: ~/.ssh/id_ed25519
+#     ansible_become: true
+#     ansible_become_user: root
+#     arch_init_install_drive: /dev/vda
+#     boot_partition_suffix: 1
+#     swap_partition_suffix: 2
+#     root_partition_suffix: 3
+#   roles:
+#     - arch_init
+
+- hosts: chroot
+  connection: chroot
+  tasks:
+    - name: pwd
+      command: pwd
+      register: result
+
+    - debug:
+        var: result.stdout_lines

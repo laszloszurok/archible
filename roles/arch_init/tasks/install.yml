@@ -1,0 +1,2 @@
+- name: Install | Run pacstrap to install the base system
+  command: pacstrap /mnt base linux linux-firmware grub efibootmgr base-devel linux-headers
