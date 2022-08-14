@@ -1,0 +1,70 @@
+arch_config_standard_packages:
+  - { package: acpilight,               description: 'control screen brightness (cmd: xbacklight)' }
+  - { package: bat,                     description: 'a pager with colors' }
+  - { package: calcurse,                description: 'tui calendar' }
+  - { package: dash,                    description: 'a fast, minimal posix shell' }
+  - { package: bottom,                  description: 'process viewer, resource monitor (cmd: btm)' }
+  - { package: ffmpeg,                  description: 'screen recorder/video converter' }
+  - { package: ffmpegthumbnailer,       description: 'generate video thumbnails (for vifmimg)' }
+  - { package: flameshot,               description: 'screenshot software' }
+  - { package: gimp,                    description: 'image manipulation software' }
+  - { package: xorg-server,             description: 'graphical server' }
+  - { package: xorg-xinit,              description: 'starts the X server' }
+  - { package: xorg-xprop,              description: 'a tool for detecting window properties' }
+  - { package: xorg-xdpyinfo,           description: 'a tool for detecting display properties' }
+  - { package: picom,                   description: 'a compositor for X' }
+  - { package: libnotify,               description: 'library for sending desktop notifications' }
+  - { package: dunst,                   description: 'a lightweight notification daemon' }
+  - { package: imv,                     description: 'a minimalist image viewer' }
+  - { package: xwallpaper,              description: 'wallpaper setting utility for X' }
+  - { package: neovim,                  description: 'a text editor' }
+  - { package: mpv,                     description: 'a minimal video player' }
+  - { package: newsboat,                description: 'tui RSS reader' }
+  - { package: qutebrowser,             description: 'web browser with vim-like keybindings' }
+  - { package: python-adblock,          description: 'adblocker used by qutebrowser' }
+  - { package: ntfs-3g,                 description: 'allows accessing NTFS partitions' }
+  - { package: pipewire,                description: 'audio system' }
+  - { package: wireplumber,             description: 'session manager for pipewire' }
+  - { package: pipewire-alsa,           description: 'pipewire alsa support' }
+  - { package: pipewire-pulse,          description: 'pipewire pulse support + handles bluetooth' }
+  - { package: pipewire-jack,           description: 'pipewire jack support' }
+  - { package: pamixer,                 description: 'cli audio controller' }
+  - { package: pulsemixer,              description: 'tui audio controller' }
+  - { package: unclutter,               description: 'hides the cursor after mouse inactivity' }
+  - { package: unrar,                   description: 'extract rar' }
+  - { package: unzip,                   description: 'extract zip' }
+  - { package: xclip,                   description: 'clipboard manager' }
+  - { package: xsel,                    description: 'clipboard manager' }
+  - { package: clipmenu,                description: 'clipboard history viewer' }
+  - { package: zathura,                 description: 'pdf viewer with vim-like keybindings' }
+  - { package: zathura-pdf-mupdf,       description: 'allows mupdf compatibility in zathura' }
+  - { package: fzf,                     description: 'a cli fuzzy finder tool' }
+  - { package: gvfs,                    description: 'virtual filesystem for usb mounts' }
+  - { package: gvfs-mtp,                description: 'mount cellphones (gio mount ...)' }
+  - { package: lazygit,                 description: 'tui for git' }
+  - { package: libreoffice-still,       description: 'office suite' }
+  - { package: numlockx,                description: 'turns numlock on when X starts' }
+  - { package: keepassxc,               description: 'a password manager' }
+  - { package: pcmanfm,                 description: 'simple GUI filemanager' }
+  - { package: playerctl,               description: 'contols media players' }
+  - { package: python-pip,              description: 'python package manager' }
+  - { package: shellcheck,              description: 'shell script analysis tool (used by bashls)' }
+  - { package: translate-shell,         description: 'cli for google translate' }
+  - { package: ttf-dejavu,              description: 'a font family' }
+  - { package: ttf-font-awesome,        description: 'font-awesome glyphs' }
+  - { package: ttf-joypixels,           description: 'emoji font' }
+  - { package: ueberzug,                description: 'image previews in the terminal' }
+  - { package: ufw,                     description: 'an uncomplicated firewall' }
+  - { package: usbutils,                description: 'provides lsusb' }
+  - { package: vifm,                    description: 'tui filemanager' }
+  - { package: qemu,                    description: 'system emulator' }
+  - { package: virt-manager,            description: 'GUI for managing libvirt VMs' }
+  - { package: iptables-nft,            description: 'required by virt-manager' }
+  - { package: dnsmasq,                 description: 'required by virt-manager' }
+  - { package: edk2-ovmf,               description: 'UEFI firmware for libvirt VMs' }
+  - { package: startship,               description: 'a cross shell prompt' }
+  - { package: zsh,                     description: 'the Z shell' }
+  - { package: zsh-syntax-highlighting, description: 'syntax highlighting for zsh' }
+  - { package: xautolock,               description: 'lock screen on inactivity' }
+  - { package: cups,                    description: 'common unix printing system' }
+  - { package: wmname,                  description: 'prints/sets the window manager name' }

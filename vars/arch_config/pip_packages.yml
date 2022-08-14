@@ -1,0 +1,3 @@
+arch_config_pip_packages:
+  - { package: pynvim,        description: 'implements support for python plugins in neovim' }
+  - { package: neovim-remote, description: '--remote support for neovim' }
