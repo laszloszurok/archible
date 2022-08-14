@@ -17,11 +17,15 @@
 
 - name: Configuration | Install packages from standard repositories
   community.general.pacman:
-    name: "{{ arch_config_standard_packages }}"
+    name: "{{ item.package | default(item) }}"
+  loop: "{{ arch_config_standard_packages }}"
+  when: arch_config_standard_packages is defined
 
 - name: Configuration | Install packages from PyPi
   ansible.builtin.pip:
-    name: "{{ arch_config_pip_packages }}"
+    name: "{{ item.package }}"
+  loop: "{{ arch_config_pip_packages }}"
+  when: arch_config_pip_packages is defined
 
 - name: Configuration | Add user
   ansible.builtin.user:
