@@ -6,6 +6,15 @@
   community.general.locale_gen:
     name: "{{ arch_config_locale }}"
 
+- name: Configure | Edit pacman.conf
+  ansible.builtin.lineinfile:
+    path: /etc/pacman.conf
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  loop:
+    - { regexp: ^#?\s*Color, line: Color }
+    - { regexp: ^#?\s*ParallelDownloads, line: ParallelDownloads = 10 }
+
 - name: Configuration | Install packages from standard repositories
   community.general.pacman:
     name: "{{ arch_config_standard_packages }}"
