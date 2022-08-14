@@ -41,7 +41,7 @@ timedatectl set-ntp true
     pacman-key --populate archlinux
     ```
 
-* increased the disk size for the live environment
+* increase the disk size for the live environment
 
 ```shell
 mount -o remount,size=1G /run/archiso/cowspace
