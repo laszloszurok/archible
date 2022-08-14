@@ -1,8 +1,8 @@
 ---
 # tasks file for arch-install
 
-- name: Include ntp-sync task
-  include_tasks: ntp-sync.yml
+- name: Include archiso task
+  include_tasks: archiso.yml
 
 - name: Include partitions task
   include_tasks: partitions.yml
