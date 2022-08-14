@@ -72,7 +72,7 @@ pacman -S ansible-core ansible python-packaging python-jmespath
   connection: chroot
   vars:
     # The description field is not used anywhere, it's just for readability. 
-    # A simple list without descriptions can be used too.
+    # A simple list without descriptions can be used too eg. [ acpilight, bat ]
     arch_config_standard_packages:
       - { package: acpilight, description: 'control screen brightness (cmd: xbacklight)' }
       - { package: bat,       description: 'a pager with colors' }
