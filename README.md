@@ -46,3 +46,46 @@ timedatectl set-ntp true
 ```shell
 mount -o remount,size=1G /run/archiso/cowspace
 ```
+
+* install ansible and it's python dependencies
+
+```shell
+pacman -S ansible-core ansible python-packaging python-jmespath
+```
+
+## Example run
+
+### Example playbook
+
+```yaml
+- hosts: archiso
+  connection: local
+  vars:
+    arch_init_install_drive: /dev/nvme0n1
+    arch_init_boot_partition_suffix: p1
+    arch_init_swap_partition_suffix: p2
+    arch_init_root_partition_suffix: p3
+  roles:
+    - arch_init
+
+- hosts: chroot
+  connection: chroot
+  vars:
+    # The description field is not used anywhere, it's just for readability. 
+    # A simple list without descriptions can be used too.
+    arch_config_standard_packages:
+      - { package: acpilight, description: 'control screen brightness (cmd: xbacklight)' }
+      - { package: bat,       description: 'a pager with colors' }
+    arch_config_timezone: Europe/Budapest
+    arch_config_locale: en_US.UTF-8
+    arch_config_user_name: myuser
+    arch_config_user_password: mypassword
+    arch_config_user_groups: wheel
+    arch_config_hostname: myhostname
+  roles:
+    - arch_config
+```
+
+```shell
+ansible-playbook -i inventory playbook.yml
+```
