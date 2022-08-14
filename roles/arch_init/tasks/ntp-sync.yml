@@ -1,2 +1,0 @@
-- name: Configure system time | Synchronize clock via NTP
-  command: timedatectl set-ntp true
