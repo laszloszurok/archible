@@ -30,11 +30,11 @@
     number: 1
     part_end: 512MB
     name: boot
-    flags: [boot, esp]
+    flags: [ boot, esp ]
     state: present
 
 - name: Partitioning | Create swap partition
-  parted:
+  community.general.parted:
     device: "{{ arch_init_install_drive }}"
     label: gpt
     number: 2
@@ -44,7 +44,7 @@
     state: present
 
 - name: Partitioning | Create root partition
-  parted:
+  community.general.parted:
     device: "{{ arch_init_install_drive }}"
     label: gpt
     number: 3
@@ -109,5 +109,5 @@
 - name: Partitioning | Mount the swap partition
   ansible.builtin.command: swapon {{ arch_init_install_drive }}{{ arch_init_swap_partition_suffix }}
 
-- name: Generate the fstab
+- name: Partitioning | Generate the fstab
   command: genfstab -U /mnt >> /mnt/etc/fstab
