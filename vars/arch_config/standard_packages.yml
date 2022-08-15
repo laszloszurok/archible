@@ -68,3 +68,4 @@ arch_config_standard_packages:
   - { package: xautolock,               description: 'lock screen on inactivity' }
   - { package: cups,                    description: 'common unix printing system' }
   - { package: wmname,                  description: 'prints/sets the window manager name' }
+  - { package: iwd,                     description: 'daemon for managing wireless devices' }
