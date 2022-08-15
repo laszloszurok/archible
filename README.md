@@ -50,7 +50,7 @@ mount -o remount,size=1G /run/archiso/cowspace
 * install ansible and it's python dependencies
 
 ```shell
-pacman -S ansible-core ansible python-packaging python-jmespath
+pacman -Sy ansible-core ansible python-packaging python-jmespath
 ```
 
 ## Example run
