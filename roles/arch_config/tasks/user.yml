@@ -1,0 +1,12 @@
+- name: User configuration | Add user
+  ansible.builtin.user:
+    name: "{{ arch_config_user_name }}"
+    password: "{{ arch_config_user_password }}"
+    groups: "{{ arch_config_user_groups }}"
+    shell: "{{ arch_config_user_shell }}"
+
+- name: User configuration | Give sudo access to the members of the wheel group
+  ansible.builtin.copy:
+    content: "%wheel ALL=(ALL) ALL"
+    dest: /etc/sudoers.d/wheel
+    validate: /usr/sbin/visudo --check --file=%s

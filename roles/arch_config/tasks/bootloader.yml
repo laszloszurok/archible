@@ -1,0 +1,16 @@
+# - name: GRUB configuration | Install GRUB
+#   ansible.builtin.command: grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+
+# # acpi_backlight=none <- don't change the backlight on acpi events
+# # resume=UUID=uuid-of-the-swap-partition <- needed for hibernation
+# - name: GRUB configuration | Set kernel options in /etc/default/grub
+#   ansible.builtin.lineinfile:
+#     path: /etc/default/grub
+#     regexp: ^GRUB_CMDLINE_LINUX=
+#     line: GRUB_CMDLINE_LINUX="acpi_backlight=none resume=UUID={{ hostvars['localhost']['swap_uuid'] }}"
+
+# - name: GRUB configuration | Generate GRUB config file
+#   ansible.builtin.command: grub-mkconfig -o /boot/grub/grub.cfg
+
+- name: Bootloader configuration | Install systemd-boot
+  ansible.builtin.command: bootctl install

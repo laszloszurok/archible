@@ -1,0 +1,9 @@
+# the 'resume' hook is added to the HOOKS array <- needed for hibernation
+- name: Initramfs configuration | Configure initramfs hooks
+  ansible.builtin.lineinfile:
+    path: /etc/mkinitcpio.conf
+    regexp: ^HOOKS=
+    line: HOOKS=(base udev autodetect modconf block filesystems keyboard resume fsck)
+
+- name: Initramfs configuration | Regenerate the initramfs presets
+  ansible.builtin.command: mkinitcpio -P

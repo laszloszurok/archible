@@ -1,0 +1,32 @@
+- name: Shell configuration | Check if dash is installed
+  ansible.builtin.package:
+    name: dash
+    state: present
+  check_mode: true
+  register: dash_status
+
+- name: Shell configuration
+  block:
+    - name: Shell configuration | Create symlink /bin/sh -> dash
+      ansible.builtin.file:
+        src: /bin/dash
+        dest: /bin/sh
+        state: link
+        force: yes
+
+    - name: Shell configuration | Create pacman hook to relink /bin/sh after system updates
+      ansible.builtin.copy:
+        content: |
+          [Trigger]
+          Type = Package
+          Operation = Install
+          Operation = Upgrade
+          Target = bash
+
+          [Action]
+          Description = Re-pointing /bin/sh symlink to dash...
+          When = PostTransaction
+          Exec = /usr/bin/ln -sfT dash /usr/bin/sh
+          Depends = dash
+        dest: /usr/share/libalpm/hooks/dashbinsh.hook
+  when: not dash_status.changed 

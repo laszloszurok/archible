@@ -1,2 +1,26 @@
 ---
 # tasks file for arch_config
+
+- name: Include localization task
+  include_tasks: localization.yml
+
+- name: Include network task
+  include_tasks: network.yml
+
+- name: Include pacman task
+  include_tasks: pacman.yml
+
+- name: Include packages task
+  include_tasks: packages.yml
+
+- name: Include shell task
+  include_tasks: shell.yml
+
+- name: Include user task
+  include_tasks: user.yml
+
+- name: Include bootloader task
+  include_tasks: bootloader.yml
+
+- name: Include initramfs task
+  include_tasks: initramfs.yml

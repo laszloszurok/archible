@@ -1,0 +1,8 @@
+- name: Package manager configuration | Edit pacman.conf
+  ansible.builtin.lineinfile:
+    path: /etc/pacman.conf
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  loop:
+    - { regexp: ^#?\s*Color, line: Color }
+    - { regexp: ^#?\s*ParallelDownloads, line: ParallelDownloads = 10 }

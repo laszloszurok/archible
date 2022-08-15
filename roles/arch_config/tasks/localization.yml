@@ -1,0 +1,7 @@
+- name: Localization | Set the timezone
+  community.general.timezone:
+    name: "{{ arch_config_timezone }}"
+
+- name: Localization | Generate the locale
+  community.general.locale_gen:
+    name: "{{ arch_config_locale }}"
