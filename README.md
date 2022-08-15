@@ -5,7 +5,7 @@ Ansible roles to install and configure ArchLinux
 ## Usage
 
 The playbook with these roles are supposed to be run on the machine that you want to install Arch on.
-You have to boot into Arch from an installation medium and install the ansible-core and ansible packages, then run the playbook against localhost.
+You have to boot into Arch from an installation medium and install the ansible-core and ansible packages, then clone this repo and run the playbook with local connection.
 
 ## Prerequisites
 
@@ -47,10 +47,10 @@ timedatectl set-ntp true
 mount -o remount,size=1G /run/archiso/cowspace
 ```
 
-* install ansible and it's python dependencies
+* install git, ansible and it's python dependencies
 
 ```shell
-pacman -Sy ansible-core ansible python-packaging python-jmespath
+pacman -Sy git ansible-core ansible python-packaging python-jmespath
 ```
 
 ## Example run
