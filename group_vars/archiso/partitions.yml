@@ -1,4 +1,0 @@
-arch_init_install_drive: /dev/nvme0n1
-arch_init_boot_partition_suffix: p1
-arch_init_swap_partition_suffix: p2
-arch_init_root_partition_suffix: p3

@@ -1,0 +1,4 @@
+install_drive: /dev/nvme0n1
+boot_partition_suffix: p1
+swap_partition_suffix: p2
+root_partition_suffix: p3
