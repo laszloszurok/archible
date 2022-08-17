@@ -35,6 +35,16 @@
     name: "{{ microcode_package_prefix | trim }}-ucode"
   when: (microcode_package_prefix | trim) != "unknown"
 
+- name: Bootloader configuration | Get the UUID of the swap partition
+  command: blkid -s UUID -o value '{{ install_drive }}{{ swap_partition_suffix }}'
+  register: swap_uuid
+  changed_when: false
+
+- name: Bootloader configuration | Get the UUID of the root partition
+  command: blkid -s UUID -o value '{{ install_drive }}{{ root_partition_suffix }}'
+  register: root_uuid
+  changed_when: false
+
 - name: Bootloader configuration | Adding bootmenu entries
   ansible.builtin.copy:
     content: |
