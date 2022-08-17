@@ -22,17 +22,18 @@
 - name: Bootloader configuration | Set microcode package prefix based on CPU vendor
   ansible.builtin.set_fact:
     microcode_package_prefix: |
-      {% if "{{ cpu_vendor.stdout }}" == "AuthenticAMD" %}
+      {% if cpu_vendor.stdout_lines[0] == "AuthenticAMD" %}
         amd
-      {% elif "{{ cpu_vendor.stdout }}" == "GenuineIntel" %}
+      {% elif cpu_vendor.stdout_lines[0] == "GenuineIntel" %}
         intel
       {% else %}
+        unknown
       {% endif %}
 
 - name: Bootloader configuration | Install vendor specific microcode
   ansible.builtin.package:
-    name: "{{ microcode_package_prefix }}-ucode"
-  when: microcode_package_prefix | length > 0
+    name: "{{ microcode_package_prefix | trim }}-ucode"
+  when: (microcode_package_prefix | trim) != "unknown"
 
 - name: Bootloader configuration | Adding bootmenu entries
   ansible.builtin.copy:
