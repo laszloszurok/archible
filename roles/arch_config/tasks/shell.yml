@@ -12,7 +12,6 @@
         src: /bin/dash
         dest: /bin/sh
         state: link
-        force: yes
 
     - name: Shell configuration | Create pacman hook to relink /bin/sh after system updates
       ansible.builtin.copy:
