@@ -16,7 +16,7 @@
   ansible.builtin.command: bootctl install
 
 - name: Bootloader configuration | Check CPU vendor
-  ansible.builtin.command: cat /proc/cpuinfo | grep vendor | uniq | grep -o '[^ ]*$'
+  ansible.builtin.shell: cat /proc/cpuinfo | grep vendor | uniq | grep -o '[^ ]*$'
   register: cpu_vendor
 
 - name: Bootloader configuration | Set microcode package prefix based on CPU vendor
