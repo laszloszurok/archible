@@ -1,3 +1,11 @@
+# Does not work in chroot
+# - name: Network configuration | Set the hostname
+#   ansible.builtin.hostname:
+#     name: "{{ arch_config_hostname }}"
+#     use: systemd
+
 - name: Network configuration | Set the hostname
-  ansible.builtin.hostname:
-    name: "{{ arch_config_hostname }}"
+  ansible.builtin.lineinfile:
+    path: /etc/hostname
+    line: "{{ arch_config_hostname }}"
+    create: yes
