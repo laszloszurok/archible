@@ -53,3 +53,4 @@
       {{ 'initrd  /' + (microcode_package_prefix | trim) + '-ucode.img' if (microcode_package_prefix | trim) != 'unknown' }}
       initrd  /initramfs-linux.img
       options root=UUID={{ root_uuid.stdout }} resume=UUID={{ swap_uuid.stdout }}
+    dest: /boot/loader/entries/arch.conf
