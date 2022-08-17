@@ -9,8 +9,8 @@
   block:
     - name: Shell configuration | Create symlink /bin/sh -> dash
       ansible.builtin.file:
-        src: /bin/dash
-        dest: /bin/sh
+        src: dash
+        dest: /usr/bin/sh
         state: link
 
     - name: Shell configuration | Create pacman hook to relink /bin/sh after system updates
