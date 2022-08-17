@@ -14,3 +14,25 @@
 
 - name: Bootloader configuration | Install systemd-boot
   ansible.builtin.command: bootctl install
+
+- name: Bootloader configuration | Check CPU vendor
+  ansible.builtin.command: cat /proc/cpuinfo | grep vendor | uniq | grep -o '[^ ]*$'
+  register: cpu_vendor
+
+- name: Bootloader configuration | Set microcode package prefix based on CPU vendor
+  ansible.builtin.set_fact:
+    microcode_package_name: "{{ 'amd' if (cpu_vendor.stdout is AuthenticAMD) else 'intel' if (cpu_vendor.stdout is GenuineIntel) else '' }}"
+
+- name: Bootloader configuration | Install vendor specific microcode
+  ansible.builtin.package:
+    name: "{{ microcode_package_prefix }}-ucode"
+  when: microcode_package_prefix | length > 0
+
+- name: Bootloader configuration | Adding bootmenu entries
+  ansible.builtin.copy:
+    content: |
+      title   Arch Linux
+      linux   /vmlinuz-linux
+      {{ 'initrd  /' + microcode_package_prefix + '-ucode.img' if (microcode_package_prefix | length > 0) }}
+      initrd  /initramfs-linux.img
+      options root=UUID={{ root_uuid.stdout }} resume=UUID={{ swap_uuid.stdout }}
