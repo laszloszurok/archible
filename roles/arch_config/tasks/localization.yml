@@ -1,6 +1,13 @@
+# Does not work in chroot
+# - name: Localization | Set the timezone
+#   community.general.timezone:
+#     name: "{{ arch_config_timezone }}"
+
 - name: Localization | Set the timezone
-  community.general.timezone:
-    name: "{{ arch_config_timezone }}"
+  ansible.builtin.file:
+    src: /usr/share/zoneinfo/{{ arch_config_timezone }}
+    dest: /etc/localtime
+    state: link
 
 - name: Localization | Generate the locale
   community.general.locale_gen:
