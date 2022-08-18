@@ -24,3 +24,5 @@
 
 - name: Include initramfs task
   include_tasks: initramfs.yml
+- name: Include dotfiles task
+  include_tasks: dotfiles.yml

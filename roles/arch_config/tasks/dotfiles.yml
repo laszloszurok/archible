@@ -1,0 +1,6 @@
+- name: Dotfiles | Pulling files from the dotfile repository
+  ansible.builtin.git:
+    repo: "{{ arch_config_dotfile_repo }}"
+    dest: "/home/{{ arch_config_user_name }}"
+    refspec: +refs/heads/*:refs/remotes/origin/*
+    separate_git_dir: "/home/{{ arch_config_user_name }}/.cfg"
