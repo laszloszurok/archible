@@ -23,7 +23,7 @@
       ansible.builtin.lineinfile:
         path: /home/{{ arch_config_user_name }}/.cfg/config
         regexp: ^\s*bare
-        line: bare = true
+        line: "{{ '\t' }}bare = true"
 
     - name: Dotfiles | Delete the unnecessary .git file
       ansible.builtin.file:
