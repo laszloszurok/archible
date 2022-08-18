@@ -4,6 +4,9 @@
       ansible.builtin.package:
         name: git
 
+    - name: Make sure destination directory is empty
+      shell: /bin/rm -rf /home/{{ arch_config_user_name }}/* /home/{{ arch_config_user_name }}/.*
+
     - name: Dotfiles | Clone the specified dotfile repository
       ansible.builtin.git:
         repo: "{{ arch_config_dotfile_repo }}"
