@@ -22,9 +22,9 @@
 - name: Bootloader configuration | Set microcode package prefix based on CPU vendor
   ansible.builtin.set_fact:
     microcode_package_prefix: |
-      {% if cpu_vendor.stdout_lines[0] == "AuthenticAMD" %}
+      {% if cpu_vendor.stdout == "AuthenticAMD" %}
         amd
-      {% elif cpu_vendor.stdout_lines[0] == "GenuineIntel" %}
+      {% elif cpu_vendor.stdout == "GenuineIntel" %}
         intel
       {% else %}
         unknown
