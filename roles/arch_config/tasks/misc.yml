@@ -1,0 +1,21 @@
+- name: Misc | Clone software from the given repositories
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - { repo: "https://github.com/laszloszurok/dwm",       dest: "/home/{{ arch_config_user_name }}/source/dwm" }
+    - { repo: "https://github.com/laszloszurok/dwmblocks", dest: "/home/{{ arch_config_user_name }}/source/dwmblocks" }
+    - { repo: "https://github.com/laszloszurok/st",        dest: "/home/{{ arch_config_user_name }}/source/st" }
+    - { repo: "https://github.com/laszloszurok/dmenu",     dest: "/home/{{ arch_config_user_name }}/source/dmenu" }
+    - { repo: "https://github.com/laszloszurok/scripts",   dest: "/home/{{ arch_config_user_name }}/source/scripts" }
+
+- name: Misc | Build and install software from source
+  community.general.make:
+    chdir: "{{ item }}"
+    target: install
+  loop:
+    - /home/{{ arch_config_user_name }}/source/dwm
+    - /home/{{ arch_config_user_name }}/source/dwmblocks
+    - /home/{{ arch_config_user_name }}/source/st
+    - /home/{{ arch_config_user_name }}/source/dmenu
+
