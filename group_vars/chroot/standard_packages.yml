@@ -62,7 +62,7 @@ arch_config_standard_packages:
   - { package: iptables-nft,            description: 'required by virt-manager' }
   - { package: dnsmasq,                 description: 'required by virt-manager' }
   - { package: edk2-ovmf,               description: 'UEFI firmware for libvirt VMs' }
-  - { package: startship,               description: 'a cross shell prompt' }
+  - { package: starship,                description: 'a cross shell prompt' }
   - { package: zsh,                     description: 'the Z shell' }
   - { package: zsh-syntax-highlighting, description: 'syntax highlighting for zsh' }
   - { package: xautolock,               description: 'lock screen on inactivity' }
