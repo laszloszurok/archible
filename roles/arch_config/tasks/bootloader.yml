@@ -18,6 +18,7 @@
 - name: Bootloader configuration | Check CPU vendor
   ansible.builtin.shell: cat /proc/cpuinfo | grep vendor | uniq | grep -o '[^ ]*$'
   register: cpu_vendor
+  changed_when: false
 
 - name: Bootloader configuration | Set microcode package prefix based on CPU vendor
   ansible.builtin.set_fact:
