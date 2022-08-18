@@ -21,7 +21,7 @@
 
     - name: Dotfiles | Configure the cloned repository as a bare repository
       ansible.builtin.lineinfile:
-        path: /home/{{ arch_config_user_name }}/.cfg
+        path: /home/{{ arch_config_user_name }}/.cfg/config
         regexp: ^\s*bare
         line: bare = true
 
