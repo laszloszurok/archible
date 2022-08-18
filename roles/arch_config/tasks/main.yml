@@ -1,6 +1,12 @@
 ---
 # tasks file for arch_config
 
+- name: Include bootloader task
+  include_tasks: bootloader.yml
+
+- name: Include initramfs task
+  include_tasks: initramfs.yml
+
 - name: Include localization task
   include_tasks: localization.yml
 
@@ -19,10 +25,5 @@
 - name: Include user task
   include_tasks: user.yml
 
-- name: Include bootloader task
-  include_tasks: bootloader.yml
-
-- name: Include initramfs task
-  include_tasks: initramfs.yml
 - name: Include dotfiles task
   include_tasks: dotfiles.yml
