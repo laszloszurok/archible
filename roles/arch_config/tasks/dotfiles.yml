@@ -1,10 +1,10 @@
-- name: Dotfiles | Clone the specified dotfile repo
+- name: Dotfiles | Set up dotfiles
   block:
     - name: Dotfiles | Install git
       ansible.builtin.package:
         name: git
 
-    - name: Dotfiles | Pull files from the specified dotfile repository
+    - name: Dotfiles | Clone the specified dotfile repository
       ansible.builtin.git:
         repo: "{{ arch_config_dotfile_repo }}"
         dest: "/home/{{ arch_config_user_name }}"
