@@ -18,4 +18,16 @@
         dest: "/home/{{ arch_config_user_name }}"
         refspec: +refs/heads/*:refs/remotes/origin/*
         separate_git_dir: "/home/{{ arch_config_user_name }}/.cfg"
+
+    - name: Dotfiles | Configure the cloned repository as a bare repository
+      ansible.builtin.lineinfile:
+        path: /home/{{ arch_config_user_name }}/.cfg
+        regexp: ^\s*bare
+        line: bare = true
+
+    - name: Dotfiles | Delete the unnecessary .git file
+      ansible.builtin.file:
+        path: /home/{{ arch_config_user_name }}/.git
+        state: absent
+
   when: arch_config_dotfile_repo is defined
