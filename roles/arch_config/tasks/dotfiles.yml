@@ -6,7 +6,7 @@
 
     - name: Make sure destination directory is empty
       ansible.builtin.file:
-        path: /home/{{ arch_config_user_name }}
+        path: /home/{{ hostvars['localhost']['arch_config_user_name'] }}
         state: "{{ item }}"
       loop:
         - absent
@@ -15,19 +15,19 @@
     - name: Dotfiles | Clone the specified dotfile repository
       ansible.builtin.git:
         repo: "{{ arch_config_dotfile_repo }}"
-        dest: "/home/{{ arch_config_user_name }}"
+        dest: "/home/{{ hostvars['localhost']['arch_config_user_name'] }}"
         refspec: +refs/heads/*:refs/remotes/origin/*
-        separate_git_dir: "/home/{{ arch_config_user_name }}/.cfg"
+        separate_git_dir: "/home/{{ hostvars['localhost']['arch_config_user_name'] }}/.cfg"
 
     - name: Dotfiles | Configure the cloned repository as a bare repository
       ansible.builtin.lineinfile:
-        path: /home/{{ arch_config_user_name }}/.cfg/config
+        path: /home/{{ hostvars['localhost']['arch_config_user_name'] }}/.cfg/config
         regexp: ^\s*bare
         line: "{{ '\t' }}bare = true"
 
     - name: Dotfiles | Delete the unnecessary .git file
       ansible.builtin.file:
-        path: /home/{{ arch_config_user_name }}/.git
+        path: /home/{{ hostvars['localhost']['arch_config_user_name'] }}/.git
         state: absent
 
   when: arch_config_dotfile_repo is defined
