@@ -4,10 +4,13 @@
       ansible.builtin.package:
         name: git
 
-    - name: Make sure destination directory is empty
+    - name: Make sure home directory is empty
       ansible.builtin.file:
         path: /home/{{ hostvars['localhost']['arch_config_user_name'] }}
         state: "{{ item }}"
+        owner: "{{ hostvars['localhost']['arch_config_user_name'] }}"
+        group: "{{ hostvars['localhost']['arch_config_user_name'] }}"
+        mode: 0755
       loop:
         - absent
         - directory
@@ -29,5 +32,13 @@
       ansible.builtin.file:
         path: /home/{{ hostvars['localhost']['arch_config_user_name'] }}/.git
         state: absent
+
+    - name: Dotfiles | Set owner and group on the contents of the home directory
+      ansible.builtin.file:
+        path: /home/{{ hostvars['localhost']['arch_config_user_name'] }}
+        owner: "{{ hostvars['localhost']['arch_config_user_name'] }}"
+        group: "{{ hostvars['localhost']['arch_config_user_name'] }}"
+        recurce: yes
+
 
   when: arch_config_dotfile_repo is defined
