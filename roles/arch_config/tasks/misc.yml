@@ -19,3 +19,48 @@
     - /home/{{ hostvars['localhost']['arch_config_user_name'] }}/source/st
     - /home/{{ hostvars['localhost']['arch_config_user_name'] }}/source/dmenu
 
+- name: Misc | Configure touchpad
+  ansible.builtin.copy:
+    content: |
+      Section "InputClass"
+      Identifier "touchpad"
+      Driver "libinput"
+      MatchIsTouchpad "on"
+      Option "Tapping" "on"
+      Option "NaturalScrolling" "true"
+    dest: /etc/X11/xorg.conf.d/30-touchpad.conf
+
+- name: Misc | Create udev rule to allow users in the video group to set the display brightness
+  ansible.builtin.copy:
+    content: |
+      SUBSYSTEM=="backlight", ACTION=="add", \
+        RUN+="/bin/chgrp video /sys/class/backlight/%k/brightness", \
+        RUN+="/bin/chmod g+w /sys/class/backlight/%k/brightness"
+    dest: /etc/udev/rules.d/90-backlight.rules
+
+- name: Misc | Create systemd service to launch slock on suspend
+  ansible.builtin.copy:
+    content: |
+      [Unit]
+      Description=Lock X session using slock for user %i
+      Before=sleep.target
+      Before=suspend.target
+
+      [Service]
+      User=%i
+      Type=simple
+      Environment="DISPLAY=:0"
+      Environment="XAUTHORITY=/run/user/1000/Xauthority"
+      ExecStartPre=/usr/bin/xset dpms force suspend
+      ExecStart=/usr/local/bin/slock
+      TimeoutSec=infinity
+
+      [Install]
+      WantedBy=sleep.target
+      WantedBy=suspend.target
+    dest: /etc/systemd/system/slock@.service
+
+- name: Misc | Enable slock@.service
+  ansible.builtin.systemd:
+    name: slock@{{ hostvars['localhost']['arch_config_user_name'] }}
+    enabled: yes
