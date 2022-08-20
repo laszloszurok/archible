@@ -11,7 +11,7 @@
       private: yes
       confirm: yes
       unsafe: yes # allows special characters such as { , which would otherwise cause templating errors 
-      encrypt: sha512
+      encrypt: sha512_crypt
 
     - name: arch_config_hostname
       prompt: Gathering information | Provide a hostname
