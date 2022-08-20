@@ -15,32 +15,6 @@ You have to boot into Arch from an installation medium and install the ansible-c
 timedatectl set-ntp true
 ```
 
-* refresh pacman's gpg keys to be able to install packages
-
-    * stop gpg-agent
-
-    ```shell
-    killall gpg-agent
-    ```
-
-    * delete the files under /etc/pacman.d/gnupg/
-
-    ```shell
-    rm -rf /etc/pacman.d/gnupg/*
-    ```
-
-    * reinitialize the keyring
-
-    ```shell
-    pacman-key --init
-    ```
-
-    * reload the default keys from the archlinux keyring
-
-    ```shell
-    pacman-key --populate archlinux
-    ```
-
 * increase the disk size for the live environment
 
 ```shell
@@ -69,7 +43,7 @@ pacman -Sy git ansible-core ansible python-packaging python-jmespath
     - arch_config
 ```
 
-### Variables should be set in the group_vars directory
+### Example variables
 
 group_vars/all/partitions.yml
 
