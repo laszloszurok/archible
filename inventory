@@ -1,2 +1,2 @@
 [chroot]
-/mnt
+/mnt exe = arch-chroot
