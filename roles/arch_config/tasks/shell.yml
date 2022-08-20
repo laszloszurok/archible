@@ -29,3 +29,9 @@
           Depends = dash
         dest: /usr/share/libalpm/hooks/dashbinsh.hook
   when: not dash_status.changed 
+
+- name: Shell configuration | Set zsh config directory
+  ansible.builtin.copy:
+    content: ZDOTDIR={{ arch_config_zdotdir }}
+    dest: /etc/zsh/zshenv
+  when: arch_config_zdotdir is defined
