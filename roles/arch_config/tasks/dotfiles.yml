@@ -5,15 +5,7 @@
         name: git
 
     - name: Make sure home directory is empty
-      ansible.builtin.file:
-        path: /home/{{ hostvars['localhost']['arch_config_user_name'] }}
-        state: "{{ item }}"
-        owner: "{{ hostvars['localhost']['arch_config_user_name'] }}"
-        group: "{{ hostvars['localhost']['arch_config_user_name'] }}"
-        mode: 0755
-      loop:
-        - absent
-        - directory
+      ansible.builtin.command: rm -rf /home/{{ hostvars['localhost']['arch_config_user_name'] }}/* /home/{{ hostvars['localhost']['arch_config_user_name'] }}/.[!.]*
 
     - name: Dotfiles | Clone the specified dotfile repository
       ansible.builtin.git:
