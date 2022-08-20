@@ -37,8 +37,9 @@
     dest: /etc/systemd/network/25-wireless.network
 
 - name: Network configuration | Enable networking services
-  name: "{{ item }}"
-  enabled: yes
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    enabled: yes
   loop:
     - systemd-networkd
     - systemd-resolved
