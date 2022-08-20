@@ -1,5 +1,29 @@
-- hosts: archiso
+- hosts: localhost
   connection: local
+
+  vars_prompt:
+    - name: arch_config_user_name
+      prompt: Gathering information | Provide a username
+      private: no
+
+    - name: arch_config_user_password
+      prompt: Gathering information | Provide the password for {{ arch_config_user_name }}
+      private: yes
+      confirm: yes
+      unsafe: yes # allows special characters such as { , which would otherwise cause templating errors 
+      encrypt: sha512
+
+    - name: arch_config_hostname
+      prompt: Gathering information | Provide a hostname
+      private: no
+
+  tasks:
+    - name: Set the provided variables as facts, so they can be accessed in other plays
+      set_fact:
+        arch_config_user_name: "{{ arch_config_user_name }}"
+        arch_config_user_password: "{{ arch_config_user_password }}"
+        arch_config_hostname: "{{ arch_config_hostname }}"
+
   roles:
     - arch_init
 

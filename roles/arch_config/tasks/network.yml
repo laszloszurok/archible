@@ -7,5 +7,5 @@
 - name: Network configuration | Set the hostname
   ansible.builtin.lineinfile:
     path: /etc/hostname
-    line: "{{ arch_config_hostname }}"
+    line: "{{ hostvars['localhost']['arch_config_hostname'] }}"
     create: yes

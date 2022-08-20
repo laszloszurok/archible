@@ -1,7 +1,7 @@
 - name: User configuration | Add user
   ansible.builtin.user:
-    name: "{{ arch_config_user_name }}"
-    password: "{{ arch_config_user_password }}"
+    name: "{{ hostvars['localhost']['arch_config_user_name'] }}"
+    password: "{{ hostvars['localhost']['arch_config_user_password'] }}"
     groups: "{{ arch_config_user_groups }}"
     shell: "{{ arch_config_user_shell }}"
 

@@ -1,5 +1,2 @@
-[archiso]
-localhost
-
 [chroot]
 /mnt

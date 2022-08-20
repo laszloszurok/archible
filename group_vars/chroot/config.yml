@@ -1,7 +1,4 @@
 arch_config_timezone: Europe/Budapest
 arch_config_locale: en_US.UTF-8
-arch_config_user_name: pulzar
-arch_config_user_password: $6$salt$IxDD3jeSOb5eB1CX5LBsqZFVkJdido3OUILO5Ifz5iwMuTS4XMS130MTSuDDl3aCI6WouIL9AjRbLCelDCy.g.
 arch_config_user_groups: wheel
 arch_config_user_shell: /bin/zsh
-arch_config_hostname: lenovo
