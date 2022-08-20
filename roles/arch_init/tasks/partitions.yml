@@ -67,23 +67,23 @@
     force: yes
 
 - name: Partitioning | Create ext4 filesystem on the root partition
-  filesystem:
+  ansible.builtin.filesystem:
     dev: "{{ install_drive }}{{ root_partition_suffix }}"
     fstype: ext4
     force: yes
 
 - name: Partitioning | Get the UUID of the boot partition
-  command: blkid -s UUID -o value '{{ install_drive }}{{ boot_partition_suffix }}'
+  ansible.builtin.command: blkid -s UUID -o value '{{ install_drive }}{{ boot_partition_suffix }}'
   register: boot_uuid
   changed_when: false
 
 - name: Partitioning | Get the UUID of the swap partition
-  command: blkid -s UUID -o value '{{ install_drive }}{{ swap_partition_suffix }}'
+  ansible.builtin.command: blkid -s UUID -o value '{{ install_drive }}{{ swap_partition_suffix }}'
   register: swap_uuid
   changed_when: false
 
 - name: Partitioning | Get the UUID of the root partition
-  command: blkid -s UUID -o value '{{ install_drive }}{{ root_partition_suffix }}'
+  ansible.builtin.command: blkid -s UUID -o value '{{ install_drive }}{{ root_partition_suffix }}'
   register: root_uuid
   changed_when: false
 
@@ -109,5 +109,6 @@
 - name: Partitioning | Mount the swap partition
   ansible.builtin.command: swapon {{ install_drive }}{{ swap_partition_suffix }}
 
+# does not work with the command module, shell has to be used
 - name: Partitioning | Generate the fstab
-  command: genfstab -U /mnt >> /mnt/etc/fstab
+  ansible.builtin.shell: genfstab -U /mnt >> /mnt/etc/fstab
