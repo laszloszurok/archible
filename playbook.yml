@@ -29,5 +29,9 @@
 
 - hosts: chroot
   connection: chroot
+
+  vars:
+     ansible_chroot_exe: arch-chroot
+
   roles:
     - arch_config
