@@ -5,7 +5,6 @@
 #     use: systemd
 
 - name: Network configuration | Set the hostname
-  ansible.builtin.lineinfile:
-    path: /etc/hostname
-    line: "{{ hostvars['localhost']['arch_config_hostname'] }}"
-    create: yes
+  ansible.builtin.copy:
+    content: "{{ hostvars['localhost']['arch_config_hostname'] }}"
+    dest: /etc/hostname
