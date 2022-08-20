@@ -8,3 +8,38 @@
   ansible.builtin.copy:
     content: "{{ hostvars['localhost']['arch_config_hostname'] }}"
     dest: /etc/hostname
+
+- name: Network configuration | Configure systemd-networkd wired connections
+  ansible.builtin.copy:
+    content: |
+      [Match]
+      Name=en*
+
+      [Network]
+      DHCP=yes
+
+      [DHCPv4]
+      RouteMetric=10 
+    dest: /etc/systemd/network/20-wired.network
+
+- name: Network configuration | Configure systemd-networkd wireless connections
+  ansible.builtin.copy:
+    content: |
+      [Match]
+      Name=wl*
+
+      [Network]
+      DHCP=yes
+      IgnoreCarrierLoss=3s
+
+      [DHCPv4]
+      RouteMetric=20
+    dest: /etc/systemd/network/25-wireless.network
+
+- name: Network configuration | Enable networking services
+  name: "{{ item }}"
+  enabled: yes
+  loop:
+    - systemd-networkd
+    - systemd-resolved
+    - iwd
