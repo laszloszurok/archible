@@ -3,18 +3,18 @@
 
   vars_prompt:
     - name: arch_config_user_name
-      prompt: Gathering information | Provide a username
+      prompt: username
       private: no
 
     - name: arch_config_user_password
-      prompt: Gathering information | Provide the password for {{ arch_config_user_name }}
+      prompt: password
       private: yes
       confirm: yes
       unsafe: yes # allows special characters such as { , which would otherwise cause templating errors 
       encrypt: sha512_crypt
 
     - name: arch_config_hostname
-      prompt: Gathering information | Provide a hostname
+      prompt: hostname
       private: no
 
   tasks:
