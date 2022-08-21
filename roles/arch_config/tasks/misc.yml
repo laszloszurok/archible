@@ -23,11 +23,12 @@
   ansible.builtin.copy:
     content: |
       Section "InputClass"
-      Identifier "touchpad"
-      Driver "libinput"
-      MatchIsTouchpad "on"
-      Option "Tapping" "on"
-      Option "NaturalScrolling" "true"
+          Identifier "touchpad"
+          Driver "libinput"
+          MatchIsTouchpad "on"
+          Option "Tapping" "on"
+          Option "NaturalScrolling" "true"
+      EndSection
     dest: /etc/X11/xorg.conf.d/30-touchpad.conf
 
 - name: Misc | Create udev rule to allow users in the video group to set the display brightness
