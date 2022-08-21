@@ -39,6 +39,7 @@ arch_config_standard_packages:
   - { package: zathura,                 description: 'pdf viewer with vim-like keybindings' }
   - { package: zathura-pdf-mupdf,       description: 'allows mupdf compatibility in zathura' }
   - { package: fzf,                     description: 'a cli fuzzy finder tool' }
+  - { package: ripgrep,                 description: 'for recursive search in directories, cmd: rg (fzf uses it)' }
   - { package: gvfs,                    description: 'virtual filesystem for usb mounts' }
   - { package: gvfs-mtp,                description: 'mount cellphones (gio mount ...)' }
   - { package: lazygit,                 description: 'tui for git' }
@@ -63,6 +64,7 @@ arch_config_standard_packages:
   - { package: dnsmasq,                 description: 'required by virt-manager' }
   - { package: edk2-ovmf,               description: 'UEFI firmware for libvirt VMs' }
   - { package: starship,                description: 'a cross shell prompt' }
+  - { package: zoxide,                  description: 'a smart cd alternative' }
   - { package: zsh,                     description: 'the Z shell' }
   - { package: zsh-syntax-highlighting, description: 'syntax highlighting for zsh' }
   - { package: xautolock,               description: 'lock screen on inactivity' }
