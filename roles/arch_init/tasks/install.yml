@@ -1,2 +1,6 @@
 - name: Install | Run pacstrap to install the base system
-  command: pacstrap /mnt base linux linux-firmware grub efibootmgr base-devel linux-headers
+  ansible.builtin.command: pacstrap /mnt base linux linux-firmware grub efibootmgr base-devel linux-headers
+
+# does not work with the command module, shell has to be used
+- name: Install | Generate the filesystem table
+  ansible.builtin.shell: genfstab -U /mnt >> /mnt/etc/fstab

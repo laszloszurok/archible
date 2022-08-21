@@ -108,7 +108,3 @@
 
 - name: Partitioning | Mount the swap partition
   ansible.builtin.command: swapon {{ install_drive }}{{ swap_partition_suffix }}
-
-# does not work with the command module, shell has to be used
-- name: Partitioning | Generate the fstab
-  ansible.builtin.shell: genfstab -U /mnt >> /mnt/etc/fstab
