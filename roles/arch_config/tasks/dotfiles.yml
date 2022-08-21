@@ -32,6 +32,6 @@
         path: /home/{{ hostvars['localhost']['arch_config_user_name'] }}
         owner: "{{ hostvars['localhost']['arch_config_user_name'] }}"
         group: "{{ hostvars['localhost']['arch_config_user_name'] }}"
-        recurce: yes
+        recurse: yes
 
   when: arch_config_dotfile_repo is defined
