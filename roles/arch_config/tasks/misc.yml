@@ -8,6 +8,8 @@
     - { repo: "https://github.com/laszloszurok/st",        dest: "/home/{{ hostvars['localhost']['arch_config_user_name'] }}/source/st" }
     - { repo: "https://github.com/laszloszurok/dmenu",     dest: "/home/{{ hostvars['localhost']['arch_config_user_name'] }}/source/dmenu" }
     - { repo: "https://github.com/laszloszurok/scripts",   dest: "/home/{{ hostvars['localhost']['arch_config_user_name'] }}/source/scripts" }
+  become: yes
+  become_user: "{{ hostvars['localhost']['arch_config_user_name'] }}"
 
 - name: Misc | Build and install software from source
   community.general.make:
