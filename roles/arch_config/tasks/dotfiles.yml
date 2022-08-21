@@ -13,6 +13,8 @@
         dest: "/home/{{ hostvars['localhost']['arch_config_user_name'] }}"
         refspec: +refs/heads/*:refs/remotes/origin/*
         separate_git_dir: "/home/{{ hostvars['localhost']['arch_config_user_name'] }}/.cfg"
+      become: yes
+      become_user: "{{ hostvars['localhost']['arch_config_user_name'] }}"
 
     - name: Dotfiles | Configure the cloned repository as a bare repository
       ansible.builtin.lineinfile:
@@ -31,6 +33,5 @@
         owner: "{{ hostvars['localhost']['arch_config_user_name'] }}"
         group: "{{ hostvars['localhost']['arch_config_user_name'] }}"
         recurce: yes
-
 
   when: arch_config_dotfile_repo is defined
