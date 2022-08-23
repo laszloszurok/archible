@@ -1,73 +1,74 @@
 arch_config_standard_packages:
-  - acpilight #control screen brightness (cmd: xbacklight)
-  - bat #a pager with colors
-  - calcurse #tui calendar
-  - dash #a fast, minimal posix shell
-  - bottom #process viewer, resource monitor (cmd: btm)
-  - ffmpeg #screen recorder/video converter
-  - ffmpegthumbnailer #generate video thumbnails (for vifmimg)
-  - flameshot #screenshot software
-  - gimp #image manipulation software
-  - xorg-server #graphical server
-  - xorg-xinit #starts the X server
-  - xorg-xprop #a tool for detecting window properties
-  - xorg-xdpyinfo #a tool for detecting display properties
-  - picom #a compositor for X
-  - libnotify #library for sending desktop notifications
-  - dunst #a lightweight notification daemon
-  - imv #a minimalist image viewer
-  - xwallpaper #wallpaper setting utility for X
-  - neovim #a text editor
-  - mpv #a minimal video player
-  - newsboat #tui RSS reader
-  - qutebrowser #web browser with vim-like keybindings
-  - python-adblock #adblocker used by qutebrowser
-  - ntfs-3g #allows accessing NTFS partitions
-  - pipewire #audio system
-  - wireplumber #session manager for pipewire
-  - pipewire-alsa #pipewire alsa support
-  - pipewire-pulse #pipewire pulse support + handles bluetooth
-  - pipewire-jack #pipewire jack support
-  - pamixer #cli audio controller
-  - pulsemixer #tui audio controller
-  - unclutter #hides the cursor after mouse inactivity
-  - unrar #extract rar
-  - unzip #extract zip
-  - xclip #clipboard manager
-  - xsel #clipboard manager
-  - clipmenu #clipboard history viewer
-  - zathura #pdf viewer with vim-like keybindings
-  - zathura-pdf-mupdf #allows mupdf compatibility in zathura
-  - fzf #a cli fuzzy finder tool
-  - ripgrep #for recursive search in directories, cmd: rg (fzf uses it)
-  - gvfs #virtual filesystem for usb mounts
-  - gvfs-mtp #mount cellphones (gio mount ...)
-  - lazygit #tui for git
-  - libreoffice-still #office suite
-  - numlockx #turns numlock on when X starts
-  - keepassxc #a password manager
-  - pcmanfm #simple GUI filemanager
-  - playerctl #contols media players
-  - python-pip #python package manager
-  - shellcheck #shell script analysis tool (used by bashls)
-  - translate-shell #cli for google translate
-  - ttf-dejavu #a font family
-  - ttf-font-awesome #font-awesome glyphs
-  - ttf-joypixels #emoji font
-  - ueberzug #image previews in the terminal
-  - ufw #an uncomplicated firewall
-  - usbutils #provides lsusb
-  - vifm #tui filemanager
-  - qemu #system emulator
-  - virt-manager #GUI for managing libvirt VMs
-  - iptables-nft #required by virt-manager
-  - dnsmasq #required by virt-manager
-  - edk2-ovmf #UEFI firmware for libvirt VMs
-  - starship #a cross shell prompt
-  - zoxide #a smart cd alternative
-  - zsh #the Z shell
-  - zsh-syntax-highlighting #syntax highlighting for zsh
-  - xautolock #lock screen on inactivity
-  - cups #common unix printing system
-  - wmname #prints/sets the window manager name
-  - iwd #daemon for managing wireless devices
+  - acpilight # control screen brightness (cmd: xbacklight)
+  - bat # a pager with colors
+  - calcurse # tui calendar
+  - dash # a fast, minimal posix shell
+  - bottom # process viewer, resource monitor (cmd: btm)
+  - ffmpeg # screen recorder/video converter
+  - ffmpegthumbnailer # generate video thumbnails (for vifmimg)
+  - flameshot # screenshot software
+  - gimp # image manipulation software
+  - xorg-server # graphical server
+  - xorg-xinit # starts the X server
+  - xorg-xprop # a tool for detecting window properties
+  - xorg-xdpyinfo # a tool for detecting display properties
+  - picom # a compositor for X
+  - libnotify # library for sending desktop notifications
+  - dunst # a lightweight notification daemon
+  - imv # a minimalist image viewer
+  - xwallpaper # wallpaper setting utility for X
+  - neovim # a text editor
+  - bash-language-server # bash linting and auto completition for neovim
+  - mpv # a minimal video player
+  - newsboat # tui RSS reader
+  - qutebrowser # web browser with vim-like keybindings
+  - python-adblock # adblocker used by qutebrowser
+  - ntfs-3g # allows accessing NTFS partitions
+  - pipewire # audio system
+  - wireplumber # session manager for pipewire
+  - pipewire-alsa # pipewire alsa support
+  - pipewire-pulse # pipewire pulse support + handles bluetooth
+  - pipewire-jack # pipewire jack support
+  - pamixer # cli audio controller
+  - pulsemixer # tui audio controller
+  - unclutter # hides the cursor after mouse inactivity
+  - unrar # extract rar
+  - unzip # extract zip
+  - xclip # clipboard manager
+  - xsel # clipboard manager
+  - clipmenu # clipboard history viewer
+  - zathura # pdf viewer with vim-like keybindings
+  - zathura-pdf-mupdf # allows mupdf compatibility in zathura
+  - fzf # a cli fuzzy finder tool
+  - ripgrep # for recursive search in directories, cmd: rg (fzf uses it)
+  - gvfs # virtual filesystem for usb mounts
+  - gvfs-mtp # mount cellphones (gio mount ...)
+  - lazygit # tui for git
+  - libreoffice-still # office suite
+  - numlockx # turns numlock on when X starts
+  - keepassxc # a password manager
+  - pcmanfm # simple GUI filemanager
+  - playerctl # contols media players
+  - python-pip # python package manager
+  - shellcheck # shell script analysis tool (used by bashls)
+  - translate-shell # cli for google translate
+  - ttf-dejavu # a font family
+  - ttf-font-awesome # font-awesome glyphs
+  - ttf-joypixels # emoji font
+  - ueberzug # image previews in the terminal
+  - ufw # an uncomplicated firewall
+  - usbutils # provides lsusb
+  - vifm # tui filemanager
+  - qemu # system emulator
+  - virt-manager # GUI for managing libvirt VMs
+  - iptables-nft # required by virt-manager
+  - dnsmasq # required by virt-manager
+  - edk2-ovmf # UEFI firmware for libvirt VMs
+  - starship # a cross shell prompt
+  - zoxide # a smart cd alternative
+  - zsh # the Z shell
+  - zsh-syntax-highlighting # syntax highlighting for zsh
+  - xautolock # lock screen on inactivity
+  - cups # common unix printing system
+  - wmname # prints/sets the window manager name
+  - iwd # daemon for managing wireless devices
