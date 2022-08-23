@@ -45,9 +45,3 @@
     - systemd-resolved
     - iwd
     - ufw
-
-- name: Network configuration | Load UFW rules
-  community.general.ufw:
-    state: enabled
-    rule: allow
-    name: qBittorrent
