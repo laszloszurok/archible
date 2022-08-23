@@ -1,4 +1,5 @@
 arch_config_timezone: Europe/Budapest
+arch_config_country: Hungary
 arch_config_locale: en_US.UTF-8
 arch_config_user_groups: wheel
 arch_config_user_shell: /bin/zsh

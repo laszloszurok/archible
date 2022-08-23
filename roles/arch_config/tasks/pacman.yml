@@ -6,3 +6,23 @@
   loop:
     - { regexp: ^#?\s*Color, line: Color }
     - { regexp: ^#?\s*ParallelDownloads, line: ParallelDownloads = 10 }
+
+- name: Package manager configuration | Install reflector
+  ansible.builtin.package:
+    name: reflector
+
+- name: Package manager configuration | Configure reflector
+  ansible.builtin.copy:
+    content: |
+      --save /etc/pacman.d/mirrorlist
+      --protocol https
+      --country {{ arch_config_country }}
+      --latest 5
+      --sort age
+    dest: /etc/xdg/reflector/reflector.conf
+
+- name: Package manager configuration | Enable reflector systemd timer
+  ansible.builtin.systemd:
+    name: reflector.timer
+    state: started
+    enabled: yes
