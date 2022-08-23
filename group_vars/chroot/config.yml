@@ -4,3 +4,4 @@ arch_config_locale: en_US.UTF-8
 arch_config_user_groups: wheel
 arch_config_user_shell: /bin/zsh
 arch_config_zdotdir: $HOME/.config/zsh
+arch_config_hostname: archlinux

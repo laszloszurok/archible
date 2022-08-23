@@ -6,7 +6,7 @@
 
 - name: Network configuration | Set the hostname
   ansible.builtin.copy:
-    content: "{{ hostvars['localhost']['arch_config_hostname'] }}"
+    content: "{{ arch_config_hostname }}"
     dest: /etc/hostname
 
 - name: Network configuration | Configure systemd-networkd wired connections

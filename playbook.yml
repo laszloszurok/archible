@@ -13,16 +13,11 @@
       unsafe: yes # allows special characters such as { , which would otherwise cause templating errors 
       encrypt: sha512_crypt
 
-    - name: arch_config_hostname
-      prompt: hostname
-      private: no
-
   tasks:
     - name: Set the provided variables as facts, so they can be accessed in other plays
       set_fact:
         arch_config_user_name: "{{ arch_config_user_name }}"
         arch_config_user_password: "{{ arch_config_user_password }}"
-        arch_config_hostname: "{{ arch_config_hostname }}"
 
   roles:
     - arch_init
