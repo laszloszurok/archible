@@ -1,16 +1,11 @@
 - name: Packages | Install packages from standard repositories
-  community.general.pacman:
+  ansible.builtin.package:
     name: "{{ arch_config_standard_packages }}"
-  when: arch_config_standard_packages is defined
 
-- name: Packages | Check if python-pip is installed
+- name: Packages | Install python-pip
   ansible.builtin.package:
     name: python-pip
-    state: present
-  check_mode: true
-  register: pip_status
 
 - name: Packages | Install packages from PyPi
   ansible.builtin.pip:
     name: "{{ arch_config_pip_packages }}"
-  when: arch_config_pip_packages is defined and not pip_status.changed

@@ -1,37 +1,30 @@
-- name: Shell configuration | Check if dash is installed
+- name: Shell configuration | Install dash
   ansible.builtin.package:
     name: dash
-    state: present
-  check_mode: true
-  register: dash_status
 
-- name: Shell configuration
-  block:
-    - name: Shell configuration | Create symlink /bin/sh -> dash
-      ansible.builtin.file:
-        src: dash
-        dest: /usr/bin/sh
-        state: link
+- name: Shell configuration | Create symlink /bin/sh -> dash
+  ansible.builtin.file:
+    src: dash
+    dest: /usr/bin/sh
+    state: link
 
-    - name: Shell configuration | Create pacman hook to relink /bin/sh after system updates
-      ansible.builtin.copy:
-        content: |
-          [Trigger]
-          Type = Package
-          Operation = Install
-          Operation = Upgrade
-          Target = bash
+- name: Shell configuration | Create pacman hook to relink /bin/sh after system updates
+  ansible.builtin.copy:
+    content: |
+      [Trigger]
+      Type = Package
+      Operation = Install
+      Operation = Upgrade
+      Target = bash
 
-          [Action]
-          Description = Re-pointing /bin/sh symlink to dash...
-          When = PostTransaction
-          Exec = /usr/bin/ln -sfT dash /usr/bin/sh
-          Depends = dash
-        dest: /usr/share/libalpm/hooks/dashbinsh.hook
-  when: not dash_status.changed 
+      [Action]
+      Description = Re-pointing /bin/sh symlink to dash...
+      When = PostTransaction
+      Exec = /usr/bin/ln -sfT dash /usr/bin/sh
+      Depends = dash
+    dest: /usr/share/libalpm/hooks/dashbinsh.hook
 
 - name: Shell configuration | Set zsh config directory
   ansible.builtin.copy:
     content: ZDOTDIR={{ arch_config_zdotdir }}
     dest: /etc/zsh/zshenv
-  when: arch_config_zdotdir is defined

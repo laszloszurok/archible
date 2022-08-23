@@ -1,37 +1,33 @@
-- name: Dotfiles | Set up dotfiles
-  block:
-    - name: Dotfiles | Install git
-      ansible.builtin.package:
-        name: git
+- name: Dotfiles | Install git
+  ansible.builtin.package:
+    name: git
 
-    - name: Make sure home directory is empty
-      ansible.builtin.shell: rm -rf /home/{{ hostvars['localhost']['arch_config_user_name'] }}/* /home/{{ hostvars['localhost']['arch_config_user_name'] }}/.[!.]*
+- name: Dotfiles | Make sure home directory is empty
+  ansible.builtin.shell: rm -rf /home/{{ hostvars['localhost']['arch_config_user_name'] }}/* /home/{{ hostvars['localhost']['arch_config_user_name'] }}/.[!.]*
 
-    - name: Dotfiles | Clone the specified dotfile repository
-      ansible.builtin.git:
-        repo: "{{ arch_config_dotfile_repo }}"
-        dest: "/home/{{ hostvars['localhost']['arch_config_user_name'] }}"
-        refspec: +refs/heads/*:refs/remotes/origin/*
-        separate_git_dir: "/home/{{ hostvars['localhost']['arch_config_user_name'] }}/.cfg"
-      become: yes
-      become_user: "{{ hostvars['localhost']['arch_config_user_name'] }}"
+- name: Dotfiles | Clone the specified dotfile repository
+  ansible.builtin.git:
+    repo: "{{ arch_config_dotfile_repo }}"
+    dest: "/home/{{ hostvars['localhost']['arch_config_user_name'] }}"
+    refspec: +refs/heads/*:refs/remotes/origin/*
+    separate_git_dir: "/home/{{ hostvars['localhost']['arch_config_user_name'] }}/.cfg"
+  become: yes
+  become_user: "{{ hostvars['localhost']['arch_config_user_name'] }}"
 
-    - name: Dotfiles | Configure the cloned repository as a bare repository
-      ansible.builtin.lineinfile:
-        path: /home/{{ hostvars['localhost']['arch_config_user_name'] }}/.cfg/config
-        regexp: ^\s*bare
-        line: "{{ '\t' }}bare = true"
+- name: Dotfiles | Configure the cloned repository as a bare repository
+  ansible.builtin.lineinfile:
+    path: /home/{{ hostvars['localhost']['arch_config_user_name'] }}/.cfg/config
+    regexp: ^\s*bare
+    line: "{{ '\t' }}bare = true"
 
-    - name: Dotfiles | Delete the unnecessary .git file
-      ansible.builtin.file:
-        path: /home/{{ hostvars['localhost']['arch_config_user_name'] }}/.git
-        state: absent
+- name: Dotfiles | Delete the unnecessary .git file
+  ansible.builtin.file:
+    path: /home/{{ hostvars['localhost']['arch_config_user_name'] }}/.git
+    state: absent
 
-    - name: Dotfiles | Set owner and group on the contents of the home directory
-      ansible.builtin.file:
-        path: /home/{{ hostvars['localhost']['arch_config_user_name'] }}
-        owner: "{{ hostvars['localhost']['arch_config_user_name'] }}"
-        group: "{{ hostvars['localhost']['arch_config_user_name'] }}"
-        recurse: yes
-
-  when: arch_config_dotfile_repo is defined
+- name: Dotfiles | Set owner and group on the contents of the home directory
+  ansible.builtin.file:
+    path: /home/{{ hostvars['localhost']['arch_config_user_name'] }}
+    owner: "{{ hostvars['localhost']['arch_config_user_name'] }}"
+    group: "{{ hostvars['localhost']['arch_config_user_name'] }}"
+    recurse: yes
