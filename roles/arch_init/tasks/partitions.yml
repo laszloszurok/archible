@@ -87,9 +87,14 @@
   register: root_uuid
   changed_when: false
 
+- set_fact:
+    boot_uuid: "{{ boot_uuid.stdout }}"
+    swap_uuid: "{{ swap_uuid.stdout }}"
+    root_uuid: "{{ root_uuid.stdout }}"
+
 - name: Partitioning | Mount the root partition
   ansible.posix.mount:
-    src: "UUID={{ root_uuid.stdout }}"
+    src: "UUID={{ root_uuid }}"
     fstype: ext4
     path: /mnt
     state: mounted
@@ -101,7 +106,7 @@
 
 - name: Partitioning | Mount the boot partition
   ansible.posix.mount:
-    src: "UUID={{ boot_uuid.stdout }}"
+    src: "UUID={{ boot_uuid }}"
     fstype: vfat
     path: /mnt/boot
     state: mounted
