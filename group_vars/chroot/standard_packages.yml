@@ -18,6 +18,7 @@ arch_config_standard_packages:
   - imv # a minimalist image viewer
   - xwallpaper # wallpaper setting utility for X
   - neovim # a text editor
+  - python-pynvim # implements support for python plugins in neovim
   - bash-language-server # bash linting and auto completition for neovim
   - mpv # a minimal video player
   - newsboat # tui RSS reader

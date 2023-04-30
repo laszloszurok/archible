@@ -1,3 +1,2 @@
 arch_config_pip_packages:
-  - pynvim # implements support for python plugins in neovim
   - neovim-remote # --remote support for neovim
