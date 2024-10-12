@@ -49,6 +49,7 @@ arch_config_standard_packages:
   - ripgrep # for recursive search in directories, cmd: rg (fzf uses it)
   - gvfs # virtual filesystem for usb mounts
   - gvfs-mtp # mount cellphones (gio mount ...)
+  - git # the stupid content tracker
   - lazygit # tui for git
   - libreoffice-still # office suite
   - numlockx # turns numlock on when X starts
