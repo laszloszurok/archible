@@ -1,27 +1,4 @@
-- name: Misc | Clone software from the given repositories
-  ansible.builtin.git:
-    repo: "{{ item.repo }}"
-    dest: "{{ item.dest }}"
-  loop:
-    - { repo: "https://github.com/laszloszurok/dwm",       dest: "/home/{{ hostvars['localhost']['arch_config_user_name'] }}/source/dwm" }
-    - { repo: "https://github.com/laszloszurok/dwmblocks", dest: "/home/{{ hostvars['localhost']['arch_config_user_name'] }}/source/dwmblocks" }
-    - { repo: "https://github.com/laszloszurok/st",        dest: "/home/{{ hostvars['localhost']['arch_config_user_name'] }}/source/st" }
-    - { repo: "https://github.com/laszloszurok/dmenu",     dest: "/home/{{ hostvars['localhost']['arch_config_user_name'] }}/source/dmenu" }
-    - { repo: "https://github.com/laszloszurok/scripts",   dest: "/home/{{ hostvars['localhost']['arch_config_user_name'] }}/source/scripts" }
-  become: yes
-  become_user: "{{ hostvars['localhost']['arch_config_user_name'] }}"
-
-- name: Misc | Build and install software from source
-  community.general.make:
-    chdir: "{{ item }}"
-    target: install
-  loop:
-    - /home/{{ hostvars['localhost']['arch_config_user_name'] }}/source/dwm
-    - /home/{{ hostvars['localhost']['arch_config_user_name'] }}/source/dwmblocks
-    - /home/{{ hostvars['localhost']['arch_config_user_name'] }}/source/st
-    - /home/{{ hostvars['localhost']['arch_config_user_name'] }}/source/dmenu
-
-- name: Misc | Configure touchpad
+- name: Misc | X11 Configure touchpad
   ansible.builtin.copy:
     content: |
       Section "InputClass"
@@ -32,38 +9,3 @@
           Option "NaturalScrolling" "true"
       EndSection
     dest: /etc/X11/xorg.conf.d/30-touchpad.conf
-
-- name: Misc | Create udev rule to allow users in the video group to set the display brightness
-  ansible.builtin.copy:
-    content: |
-      SUBSYSTEM=="backlight", ACTION=="add", \
-        RUN+="/bin/chgrp video /sys/class/backlight/%k/brightness", \
-        RUN+="/bin/chmod g+w /sys/class/backlight/%k/brightness"
-    dest: /etc/udev/rules.d/90-backlight.rules
-
-- name: Misc | Create systemd service to launch slock on suspend
-  ansible.builtin.copy:
-    content: |
-      [Unit]
-      Description=Lock X session using slock for user %i
-      Before=sleep.target
-      Before=suspend.target
-
-      [Service]
-      User=%i
-      Type=simple
-      Environment="DISPLAY=:0"
-      Environment="XAUTHORITY=/run/user/1000/Xauthority"
-      ExecStartPre=/usr/bin/xset dpms force suspend
-      ExecStart=/usr/local/bin/slock
-      TimeoutSec=infinity
-
-      [Install]
-      WantedBy=sleep.target
-      WantedBy=suspend.target
-    dest: /etc/systemd/system/slock@.service
-
-- name: Misc | Enable slock@.service
-  ansible.builtin.systemd:
-    name: slock@{{ hostvars['localhost']['arch_config_user_name'] }}
-    enabled: yes
