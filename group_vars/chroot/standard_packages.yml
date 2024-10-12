@@ -85,6 +85,7 @@ arch_config_standard_packages:
   - bluez-utils # provides bluetoothctl
   - bind # DNS protocol implementation (provides dig)
   - net-tools # network configuration tools (provides netstat)
+  - networkmanager # network connection manager (provides nmcli and nmtui)
   - gnome-themes-extra # gui themes
   - gnome-keyring # keyring for storing passwords/encryption keys
   - polkit-gnome # polkit auth agent
