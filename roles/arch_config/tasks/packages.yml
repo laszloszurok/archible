@@ -3,13 +3,7 @@
     name: "{{ arch_config_standard_packages }}"
   when: arch_config_standard_packages is defined and arch_config_standard_packages | length > 0
 
-- block:
-  - name: Packages | Install python-pip and python-setuptools
-    ansible.builtin.package:
-      name:
-        - python-pip
-        - python-setuptools
-  - name: Packages | Install packages from PyPi
-    ansible.builtin.pip:
-      name: "{{ arch_config_pip_packages }}"
+- name: Packages | Install packages from PyPi
+  community.general.pipx:
+    name: "{{ arch_config_pip_packages }}"
   when: arch_config_pip_packages is defined and arch_config_pip_packages | length > 0
