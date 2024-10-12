@@ -1,2 +1,0 @@
-arch_config_pip_packages:
-  - neovim-remote # --remote support for neovim
