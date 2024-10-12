@@ -1,5 +1,7 @@
 arch_config_standard_packages:
-  - acpilight # control screen brightness (cmd: xbacklight)
+  - man # for manuals
+  - brightnessctl # control screen brightness
+  - bc # cli calculator
   - bat # a pager with colors
   - calcurse # tui calendar
   - dash # a fast, minimal posix shell
@@ -12,21 +14,24 @@ arch_config_standard_packages:
   - xorg-xinit # starts the X server
   - xorg-xprop # a tool for detecting window properties
   - xorg-xdpyinfo # a tool for detecting display properties
+  - xorg-xrandr # tool for adjusting display resolution
   - picom # a compositor for X
   - libnotify # library for sending desktop notifications
   - dunst # a lightweight notification daemon
   - imv # a minimalist image viewer
-  - xwallpaper # wallpaper setting utility for X
+  - xwallpaper # wallpaper setting utility for X11
   - neovim # a text editor
   - python-pynvim # implements support for python plugins in neovim
   - bash-language-server # bash linting and auto completition for neovim
   - mpv # a minimal video player
+  - yt-dlp # for playing youtube videos with mpv
   - newsboat # tui RSS reader
   - qutebrowser # web browser with vim-like keybindings
   - python-adblock # adblocker used by qutebrowser
   - ntfs-3g # allows accessing NTFS partitions
   - pipewire # audio system
   - wireplumber # session manager for pipewire
+  - alsa-firmware # some laptop sound cards need this
   - pipewire-alsa # pipewire alsa support
   - pipewire-pulse # pipewire pulse support + handles bluetooth
   - pipewire-jack # pipewire jack support
@@ -73,3 +78,10 @@ arch_config_standard_packages:
   - cups # common unix printing system
   - wmname # prints/sets the window manager name
   - iwd # daemon for managing wireless devices
+  - bluez # bluetooth implementation
+  - bluez-utils # provides bluetoothctl
+  - bind # DNS protocol implementation (provides dig)
+  - net-tools # network configuration tools (provides netstat)
+  - gnome-themes-extra # gui themes
+  - gnome-keyring # keyring for storing passwords/encryption keys
+  - polkit-gnome # polkit auth agent
