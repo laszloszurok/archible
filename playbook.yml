@@ -1,32 +1,34 @@
+############
+# arch_init
+############
+
 - hosts: localhost
   connection: local
-
   vars_prompt:
     - name: arch_config_user_name
       prompt: username
       private: no
-
     - name: arch_config_user_password
       prompt: password
       private: yes
       confirm: yes
-      unsafe: yes # allows special characters such as { , which would otherwise cause templating errors 
+      unsafe: yes # allows special characters, which would otherwise cause templating errors
       encrypt: sha512_crypt
-
   tasks:
     - name: Set the provided variables as facts, so they can be accessed in other plays
       set_fact:
         arch_config_user_name: "{{ arch_config_user_name }}"
         arch_config_user_password: "{{ arch_config_user_password }}"
-
   roles:
     - arch_init
 
+##############
+# arch_config
+##############
+
 - hosts: chroot
   connection: chroot
-
   vars:
      ansible_chroot_exe: arch-chroot
-
   roles:
     - arch_config
