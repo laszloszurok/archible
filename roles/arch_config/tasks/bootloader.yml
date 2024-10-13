@@ -1,6 +1,12 @@
+- name: Bootloader configuration | Check if systemd-boot is installed
+  ansible.builtin.command: bootctl is-installed
+  register: bootctl_isinstalled
+  changed_when: false
 
-- name: Bootloader configuration | Install systemd-boot
+- name: Bootloader configuration | Install systemd-boot if not present
   ansible.builtin.command: bootctl install
+  changed_when: true
+  when: bootctl_isinstalled.stdout == "no"
 
 - name: Bootloader configuration | Check CPU vendor
   ansible.builtin.shell: cat /proc/cpuinfo | grep vendor | uniq | grep -o '[^ ]*$'
