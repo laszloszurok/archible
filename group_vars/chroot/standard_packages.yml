@@ -23,6 +23,7 @@ arch_config_standard_packages:
   - github-cli # gh cli
   - gnome-keyring # keyring for storing passwords/encryption keys
   - gnome-themes-extra # gui themes
+  - gnu-netcat # nc
   - gvfs # virtual filesystem for usb mounts
   - gvfs-mtp # mount cellphones (gio mount ...)
   - hypridle # idle daemon for hyprland
