@@ -2,3 +2,19 @@
   ansible.builtin.fail:
     msg: "This host is not booted from the Arch install media!"
   when: ansible_nodename != 'archiso'
+
+- name: Preinstall checks | Verify the boot mode
+  block:
+    - name: Preinstall checks | Verify the boot mode | Check if fw_platform_size exists
+      ansible.builtin.stat:
+        path: /sys/firmware/efi/fw_platform_size
+      register: fw_platform_size
+    - name: Preinstall checks | Verify the boot mode | Get EFI platform size
+      ansible.builtin.command: cat /sys/firmware/efi/fw_platform_size
+      register: boot_mode
+      changed_when: false
+      when: fw_platform_size.exists
+    - name: Preinstall checks | Verify the boot mode | Check EFI platform size
+      ansible.builtin.fail:
+        msg: Sorry, only x64 UEFI boot mode is supported
+      when: not fw_platform_size.exists or boot_mode.stdout != "64"
