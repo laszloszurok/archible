@@ -24,12 +24,12 @@ arch_config_standard_packages:
   - neovim # a text editor
   - python-pynvim # implements support for python plugins in neovim
   - bash-language-server # bash linting and auto completition for neovim
+  - shellcheck # shell script analysis tool (used by bashls)
   - mpv # a minimal video player
   - yt-dlp # for playing youtube videos with mpv
   - newsboat # tui RSS reader
   - qutebrowser # web browser with vim-like keybindings
   - python-adblock # adblocker used by qutebrowser
-  - ntfs-3g # allows accessing NTFS partitions
   - pipewire # audio system
   - wireplumber # session manager for pipewire
   - alsa-firmware # some laptop sound cards need this
@@ -51,37 +51,27 @@ arch_config_standard_packages:
   - gvfs # virtual filesystem for usb mounts
   - gvfs-mtp # mount cellphones (gio mount ...)
   - git # the stupid content tracker
+  - github-cli # gh cli
   - lazygit # tui for git
   - libreoffice-still # office suite
   - numlockx # turns numlock on when X starts
-  - keepassxc # a password manager
-  - pcmanfm # simple GUI filemanager
   - playerctl # contols media players
   - python-pip # python package manager
   - python-pipx # handles venv creation for user-wide installs
   - python-setuptools # download, build, install python packages
-  - shellcheck # shell script analysis tool (used by bashls)
   - translate-shell # cli for google translate
   - ttf-dejavu # a font family
   - ttf-font-awesome # font-awesome glyphs
   - ttf-joypixels # emoji font
-  - ueberzug # image previews in the terminal
   - ufw # an uncomplicated firewall
   - usbutils # provides lsusb
   - vifm # tui filemanager
-  - qemu # system emulator
-  - virt-manager # GUI for managing libvirt VMs
-  - iptables-nft # required by virt-manager
-  - dnsmasq # required by virt-manager
-  - edk2-ovmf # UEFI firmware for libvirt VMs
   - starship # a cross shell prompt
-  - zoxide # a smart cd alternative
   - zsh # the Z shell
   - zsh-syntax-highlighting # syntax highlighting for zsh
   - xautolock # lock screen on inactivity
   - cups # common unix printing system
   - wmname # prints/sets the window manager name
-  - iwd # daemon for managing wireless devices
   - bluez # bluetooth implementation
   - bluez-utils # provides bluetoothctl
   - bind # DNS protocol implementation (provides dig)
@@ -90,3 +80,9 @@ arch_config_standard_packages:
   - gnome-themes-extra # gui themes
   - gnome-keyring # keyring for storing passwords/encryption keys
   - polkit-gnome # polkit auth agent
+  - hyprland # wayland window manager
+  - hypridle # idle daemon for hyprland
+  - hyprlock # screen lock utility for hyprland
+  - hyprpaper # wallpeper utility for hyprland
+  - xdg-desktop-portal # desktop integration portals for sandboxed apps
+  - xdg-desktop-portal-hyprland # xdg-desktop-portal backend for hyprland
