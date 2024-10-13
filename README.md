@@ -24,7 +24,7 @@ mount -o remount,size=1G /run/archiso/cowspace
 * install git, ansible and it's python dependencies
 
 ```shell
-pacman -Sy git ansible-core ansible python-packaging python-jmespath
+pacman -Sy git ansible-core ansible python-packaging python-jmespath python-passlib
 ```
 
 ## Usage example
