@@ -2,6 +2,7 @@
   ansible.builtin.command: bootctl is-installed
   register: bootctl_isinstalled
   changed_when: false
+  failed_when: false
 
 - name: Bootloader configuration | Install systemd-boot if not present
   ansible.builtin.command: bootctl install
