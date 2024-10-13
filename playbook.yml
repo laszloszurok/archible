@@ -7,12 +7,12 @@
   vars_prompt:
     - name: arch_config_user_name
       prompt: username
-      private: no
+      private: false
     - name: arch_config_user_password
       prompt: password
-      private: yes
-      confirm: yes
-      unsafe: yes # allows special characters, which would otherwise cause templating errors
+      private: true
+      confirm: true
+      unsafe: true # allows special characters, which would otherwise cause templating errors
       encrypt: sha512_crypt
   tasks:
     - name: Set the provided variables as facts, so they can be accessed in other plays

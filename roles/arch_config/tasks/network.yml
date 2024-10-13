@@ -12,7 +12,7 @@
 - name: Network configuration | Enable networking services
   ansible.builtin.systemd:
     name: "{{ item }}"
-    enabled: yes
+    enabled: true
   loop:
     - NetworkManager
     - systemd-resolved

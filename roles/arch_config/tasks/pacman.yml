@@ -25,4 +25,4 @@
   ansible.builtin.systemd:
     name: reflector.timer
     state: started
-    enabled: yes
+    enabled: true

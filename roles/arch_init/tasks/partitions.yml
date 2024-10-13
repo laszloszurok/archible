@@ -58,19 +58,19 @@
     dev: "{{ install_drive }}{{ boot_partition_suffix }}"
     fstype: vfat
     opts: -F32
-    force: yes
+    force: true
 
 - name: Partitioning | Create swap filesystem on the swap partition
   ansible.builtin.filesystem:
     dev: "{{ install_drive }}{{ swap_partition_suffix }}"
     fstype: swap
-    force: yes
+    force: true
 
 - name: Partitioning | Create ext4 filesystem on the root partition
   ansible.builtin.filesystem:
     dev: "{{ install_drive }}{{ root_partition_suffix }}"
     fstype: ext4
-    force: yes
+    force: true
 
 - name: Partitioning | Get the UUID of the boot partition
   ansible.builtin.command: blkid -s UUID -o value '{{ install_drive }}{{ boot_partition_suffix }}'
