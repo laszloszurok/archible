@@ -1,88 +1,88 @@
 arch_config_standard_packages:
+  - alsa-firmware # some laptop sound cards need this
   - base-devel # basic tools to build arch linux packages (makepkg)
-  - man # for manuals
-  - brightnessctl # control screen brightness
-  - bc # cli calculator
+  - bash-language-server # bash linting and auto completition for neovim
   - bat # a pager with colors
-  - calcurse # tui calendar
-  - dash # a fast, minimal posix shell
+  - bc # cli calculator
+  - bind # DNS protocol implementation (provides dig)
+  - bluez # bluetooth implementation
+  - bluez-utils # provides bluetoothctl
   - bottom # process viewer, resource monitor (cmd: btm)
+  - brightnessctl # control screen brightness
+  - calcurse # tui calendar
+  - clipmenu # clipboard history viewer
+  - cups # common unix printing system
+  - dash # a fast, minimal posix shell
+  - dunst # a lightweight notification daemon
   - ffmpeg # screen recorder/video converter
   - ffmpegthumbnailer # generate video thumbnails (for vifmimg)
   - flameshot # screenshot software
-  - gimp # image manipulation software
-  - xorg-server # graphical server
-  - xorg-xinit # starts the X server
-  - xorg-xprop # a tool for detecting window properties
-  - xorg-xdpyinfo # a tool for detecting display properties
-  - xorg-xrandr # tool for adjusting display resolution
-  - picom # a compositor for X
-  - libnotify # library for sending desktop notifications
-  - dunst # a lightweight notification daemon
-  - imv # a minimalist image viewer
-  - xwallpaper # wallpaper setting utility for X11
-  - neovim # a text editor
-  - python-pynvim # implements support for python plugins in neovim
-  - bash-language-server # bash linting and auto completition for neovim
-  - shellcheck # shell script analysis tool (used by bashls)
-  - mpv # a minimal video player
-  - yt-dlp # for playing youtube videos with mpv
-  - newsboat # tui RSS reader
-  - qutebrowser # web browser with vim-like keybindings
-  - python-adblock # adblocker used by qutebrowser
-  - pipewire # audio system
-  - wireplumber # session manager for pipewire
-  - alsa-firmware # some laptop sound cards need this
-  - pipewire-alsa # pipewire alsa support
-  - pipewire-pulse # pipewire pulse support + handles bluetooth
-  - pipewire-jack # pipewire jack support
-  - pamixer # cli audio controller
-  - pulsemixer # tui audio controller
-  - unclutter # hides the cursor after mouse inactivity
-  - unrar # extract rar
-  - unzip # extract zip
-  - xclip # clipboard manager
-  - xsel # clipboard manager
-  - clipmenu # clipboard history viewer
-  - zathura # pdf viewer with vim-like keybindings
-  - zathura-pdf-mupdf # allows mupdf compatibility in zathura
   - fzf # a cli fuzzy finder tool
-  - ripgrep # for recursive search in directories, cmd: rg (fzf uses it)
-  - gvfs # virtual filesystem for usb mounts
-  - gvfs-mtp # mount cellphones (gio mount ...)
+  - gimp # image manipulation software
   - git # the stupid content tracker
   - github-cli # gh cli
+  - gnome-keyring # keyring for storing passwords/encryption keys
+  - gnome-themes-extra # gui themes
+  - gvfs # virtual filesystem for usb mounts
+  - gvfs-mtp # mount cellphones (gio mount ...)
+  - hypridle # idle daemon for hyprland
+  - hyprland # wayland window manager
+  - hyprlock # screen lock utility for hyprland
+  - hyprpaper # wallpeper utility for hyprland
+  - imv # a minimalist image viewer
   - lazygit # tui for git
+  - libnotify # library for sending desktop notifications
   - libreoffice-still # office suite
+  - man # for manuals
+  - mpv # a minimal video player
+  - neovim # a text editor
+  - net-tools # network configuration tools (provides netstat)
+  - networkmanager # network connection manager (provides nmcli and nmtui)
+  - newsboat # tui RSS reader
   - numlockx # turns numlock on when X starts
+  - pamixer # cli audio controller
+  - picom # a compositor for X
+  - pipewire # audio system
+  - pipewire-alsa # pipewire alsa support
+  - pipewire-jack # pipewire jack support
+  - pipewire-pulse # pipewire pulse support + handles bluetooth
   - playerctl # contols media players
+  - polkit-gnome # polkit auth agent
+  - pulsemixer # tui audio controller
+  - python-adblock # adblocker used by qutebrowser
   - python-pip # python package manager
   - python-pipx # handles venv creation for user-wide installs
+  - python-pynvim # implements support for python plugins in neovim
   - python-setuptools # download, build, install python packages
+  - qutebrowser # web browser with vim-like keybindings
+  - ripgrep # for recursive search in directories, cmd: rg (fzf uses it)
+  - shellcheck # shell script analysis tool (used by bashls)
+  - starship # a cross shell prompt
   - translate-shell # cli for google translate
   - ttf-dejavu # a font family
   - ttf-font-awesome # font-awesome glyphs
   - ttf-joypixels # emoji font
   - ufw # an uncomplicated firewall
+  - unclutter # hides the cursor after mouse inactivity
+  - unrar # extract rar
+  - unzip # extract zip
   - usbutils # provides lsusb
   - vifm # tui filemanager
-  - starship # a cross shell prompt
-  - zsh # the Z shell
-  - zsh-syntax-highlighting # syntax highlighting for zsh
-  - xautolock # lock screen on inactivity
-  - cups # common unix printing system
+  - wireplumber # session manager for pipewire
   - wmname # prints/sets the window manager name
-  - bluez # bluetooth implementation
-  - bluez-utils # provides bluetoothctl
-  - bind # DNS protocol implementation (provides dig)
-  - net-tools # network configuration tools (provides netstat)
-  - networkmanager # network connection manager (provides nmcli and nmtui)
-  - gnome-themes-extra # gui themes
-  - gnome-keyring # keyring for storing passwords/encryption keys
-  - polkit-gnome # polkit auth agent
-  - hyprland # wayland window manager
-  - hypridle # idle daemon for hyprland
-  - hyprlock # screen lock utility for hyprland
-  - hyprpaper # wallpeper utility for hyprland
+  - xautolock # lock screen on inactivity
+  - xclip # clipboard manager
   - xdg-desktop-portal # desktop integration portals for sandboxed apps
   - xdg-desktop-portal-hyprland # xdg-desktop-portal backend for hyprland
+  - xorg-server # graphical server
+  - xorg-xdpyinfo # a tool for detecting display properties
+  - xorg-xinit # starts the X server
+  - xorg-xprop # a tool for detecting window properties
+  - xorg-xrandr # tool for adjusting display resolution
+  - xsel # clipboard manager
+  - xwallpaper # wallpaper setting utility for X11
+  - yt-dlp # for playing youtube videos with mpv
+  - zathura # pdf viewer with vim-like keybindings
+  - zathura-pdf-mupdf # allows mupdf compatibility in zathura
+  - zsh # the Z shell
+  - zsh-syntax-highlighting # syntax highlighting for zsh
