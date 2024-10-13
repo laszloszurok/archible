@@ -13,8 +13,8 @@
       ansible.builtin.command: cat /sys/firmware/efi/fw_platform_size
       register: boot_mode
       changed_when: false
-      when: fw_platform_size.exists
+      when: fw_platform_size.stat.exists
     - name: Preinstall checks | Verify the boot mode | Check EFI platform size
       ansible.builtin.fail:
         msg: Sorry, only x64 UEFI boot mode is supported
-      when: not fw_platform_size.exists or boot_mode.stdout != "64"
+      when: not fw_platform_size.stat.exists or boot_mode.stdout != "64"
