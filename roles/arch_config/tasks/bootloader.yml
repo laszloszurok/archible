@@ -9,7 +9,11 @@
   when: bootctl_isinstalled.stdout == "no"
 
 - name: Bootloader configuration | Check CPU vendor
-  ansible.builtin.shell: cat /proc/cpuinfo | grep vendor | uniq | grep -o '[^ ]*$'
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail
+      grep vendor /proc/cpuinfo | uniq | grep -o '[^ ]*$'
+    executable: /bin/bash
   register: cpu_vendor
   changed_when: false
 
