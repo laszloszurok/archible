@@ -25,8 +25,5 @@
 - name: Include user task
   include_tasks: user.yml
 
-- name: Include dotfiles task
-  include_tasks: dotfiles.yml
-
 - name: Include misc task
   include_tasks: misc.yml
