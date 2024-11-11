@@ -26,11 +26,14 @@ arch_config_standard_packages:
   - gnu-netcat # nc
   - gvfs # virtual filesystem for usb mounts
   - gvfs-mtp # mount cellphones (gio mount ...)
+  - hyprcursor # hyprland cursor lib and utils
   - hypridle # idle daemon for hyprland
   - hyprland # wayland window manager
   - hyprlock # screen lock utility for hyprland
   - hyprpaper # wallpeper utility for hyprland
+  - hyprutils # hyprland utils library
   - imv # a minimalist image viewer
+  - kitty # terminal emulator
   - lazygit # tui for git
   - libnotify # library for sending desktop notifications
   - libreoffice-still # office suite
@@ -41,6 +44,7 @@ arch_config_standard_packages:
   - networkmanager # network connection manager (provides nmcli and nmtui)
   - newsboat # tui RSS reader
   - numlockx # turns numlock on when X starts
+  - pacman-contrib # pacman uitility scripts (pacdiff, pacsearch etc.)
   - pamixer # cli audio controller
   - picom # a compositor for X
   - pipewire # audio system
@@ -69,6 +73,7 @@ arch_config_standard_packages:
   - unzip # extract zip
   - usbutils # provides lsusb
   - vifm # tui filemanager
+  - waybar # wayland statusbar
   - wireplumber # session manager for pipewire
   - wmname # prints/sets the window manager name
   - xautolock # lock screen on inactivity
@@ -86,4 +91,5 @@ arch_config_standard_packages:
   - zathura # pdf viewer with vim-like keybindings
   - zathura-pdf-mupdf # allows mupdf compatibility in zathura
   - zsh # the Z shell
+  - zsh-history-substring-search # search zsh history with fzf
   - zsh-syntax-highlighting # syntax highlighting for zsh
