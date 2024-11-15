@@ -39,6 +39,7 @@ arch_config_standard_packages:
   - libreoffice-still # office suite
   - man # for manuals
   - mpv # a minimal video player
+  - mpv-mpris # mpris plugin for mpv
   - neovim # a text editor
   - net-tools # network configuration tools (provides netstat)
   - networkmanager # network connection manager (provides nmcli and nmtui)
