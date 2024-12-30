@@ -2,6 +2,7 @@ arch_config_standard_packages:
   - alsa-firmware # some laptop sound cards need this
   - base-devel # basic tools to build arch linux packages (makepkg)
   - bash-language-server # bash linting and auto completition for neovim
+  - typescript-language-server # typescript and javascript language server
   - bat # a pager with colors
   - bc # cli calculator
   - bind # DNS protocol implementation (provides dig)
@@ -10,6 +11,7 @@ arch_config_standard_packages:
   - bottom # process viewer, resource monitor (cmd: btm)
   - brightnessctl # control screen brightness
   - calcurse # tui calendar
+  - clang # C language tools
   - clipmenu # clipboard history viewer
   - cups # common unix printing system
   - dash # a fast, minimal posix shell
@@ -23,6 +25,7 @@ arch_config_standard_packages:
   - github-cli # gh cli
   - gnome-keyring # keyring for storing passwords/encryption keys
   - gnome-themes-extra # gui themes
+  - gnu-free-fonts # gnu free font family
   - gnu-netcat # nc
   - gvfs # virtual filesystem for usb mounts
   - gvfs-mtp # mount cellphones (gio mount ...)
@@ -33,6 +36,10 @@ arch_config_standard_packages:
   - hyprpaper # wallpeper utility for hyprland
   - hyprutils # hyprland utils library
   - imv # a minimalist image viewer
+  - jdk-openjdk # openjdk java latest development kit
+  - jre11-openjdk # openjdk java 11 full runtime environment
+  - jre17-openjdk # openjdk java 17 full runtime environment
+  - jre21-openjdk # openjdk java 21 full runtime environment
   - kitty # terminal emulator
   - lazygit # tui for git
   - libnotify # library for sending desktop notifications
@@ -61,6 +68,8 @@ arch_config_standard_packages:
   - python-pynvim # implements support for python plugins in neovim
   - python-setuptools # download, build, install python packages
   - qutebrowser # web browser with vim-like keybindings
+  - qt5-wayland # qt5 apis for wayland
+  - qt6-wayland # qt6 apis for wayland
   - ripgrep # for recursive search in directories, cmd: rg (fzf uses it)
   - shellcheck # shell script analysis tool (used by bashls)
   - starship # a cross shell prompt
@@ -80,6 +89,7 @@ arch_config_standard_packages:
   - xautolock # lock screen on inactivity
   - xclip # clipboard manager
   - xdg-desktop-portal # desktop integration portals for sandboxed apps
+  - xdg-desktop-portal-gtk # xdg-desktop-portal backend using gtk
   - xdg-desktop-portal-hyprland # xdg-desktop-portal backend for hyprland
   - xorg-server # graphical server
   - xorg-xdpyinfo # a tool for detecting display properties
@@ -91,6 +101,8 @@ arch_config_standard_packages:
   - yt-dlp # for playing youtube videos with mpv
   - zathura # pdf viewer with vim-like keybindings
   - zathura-pdf-mupdf # allows mupdf compatibility in zathura
+  - zip # zip archiver
   - zsh # the Z shell
+  - zsh-completions # additional completion definitions for zsh
   - zsh-history-substring-search # search zsh history with fzf
   - zsh-syntax-highlighting # syntax highlighting for zsh
