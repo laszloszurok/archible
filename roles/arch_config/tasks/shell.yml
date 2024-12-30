@@ -24,6 +24,23 @@
       Depends = dash
     dest: /usr/share/libalpm/hooks/dashbinsh.hook
 
+- name: Shell configuration | Create pacman hook to refresh zsh completions after installing a package
+  ansible.builtin.copy:
+    content: |
+      [Trigger]
+      Operation = Install
+      Operation = Upgrade
+      Operation = Remove
+      Type = Path
+      Target = usr/bin/*
+
+      [Action]
+      Depends = zsh
+      Depends = procps-ng
+      When = PostTransaction
+      Exec = /usr/bin/pkill zsh --signal=USR1
+    dest: /usr/share/libalpm/hooks/zsh-rehash.hook
+
 - name: Shell configuration | Set zsh config directory
   ansible.builtin.copy:
     content: ZDOTDIR={{ arch_config_zdotdir }}
