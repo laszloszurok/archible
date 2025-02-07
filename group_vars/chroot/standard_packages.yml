@@ -72,6 +72,7 @@ arch_config_standard_packages:
   - qt6-wayland # qt6 apis for wayland
   - ripgrep # for recursive search in directories, cmd: rg (fzf uses it)
   - shellcheck # shell script analysis tool (used by bashls)
+  - socat # socket cat, transfer data between sockets
   - starship # a cross shell prompt
   - translate-shell # cli for google translate
   - ttf-dejavu # a font family
