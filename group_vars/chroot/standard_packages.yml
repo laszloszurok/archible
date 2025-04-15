@@ -8,7 +8,6 @@ arch_config_standard_packages:
   - bind # DNS protocol implementation (provides dig)
   - bluez # bluetooth implementation
   - bluez-utils # provides bluetoothctl
-  - bottom # process viewer, resource monitor (cmd: btm)
   - brightnessctl # control screen brightness
   - calcurse # tui calendar
   - clang # C language tools
@@ -16,6 +15,7 @@ arch_config_standard_packages:
   - cups # common unix printing system
   - dash # a fast, minimal posix shell
   - dunst # a lightweight notification daemon
+  - exfatprogs # exFAT userspace utilities, mkfs.exfat
   - ffmpeg # screen recorder/video converter
   - ffmpegthumbnailer # generate video thumbnails (for vifmimg)
   - flameshot # screenshot software
@@ -102,8 +102,10 @@ arch_config_standard_packages:
   - yt-dlp # for playing youtube videos with mpv
   - zathura # pdf viewer with vim-like keybindings
   - zathura-pdf-mupdf # allows mupdf compatibility in zathura
+  - zbar # cli tool for reading barcodes/qrcodes from an image
   - zip # zip archiver
   - zsh # the Z shell
   - zsh-completions # additional completion definitions for zsh
   - zsh-history-substring-search # search zsh history with fzf
   - zsh-syntax-highlighting # syntax highlighting for zsh
+  - qrencode # cli tool for encoding data as qrcode
