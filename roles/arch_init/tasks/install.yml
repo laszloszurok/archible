@@ -1,6 +1,5 @@
 - name: Install | Run pacstrap to install the base system
   ansible.builtin.command: pacstrap /mnt base linux linux-firmware python
 
-# does not work with the command module, shell has to be used
 - name: Install | Generate the filesystem table
   ansible.builtin.shell: genfstab -U /mnt >> /mnt/etc/fstab
