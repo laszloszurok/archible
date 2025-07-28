@@ -20,6 +20,7 @@ arch_config_standard_packages:
   - ffmpegthumbnailer # generate video thumbnails (for vifmimg)
   - flameshot # screenshot software
   - fzf # a cli fuzzy finder tool
+  - fwupd # firmware update tools
   - gimp # image manipulation software
   - git # the stupid content tracker
   - github-cli # gh cli
